@@ -1,0 +1,60 @@
+.vr {
+  height: auto;
+  border-left: solid 2px rgb(174, 174, 174);
+}
+
+.divider {
+  height: 1px;
+  background-color: #444;
+}
+
+.m-card {
+  padding: 1em;
+}
+
+.sec {
+  height: max-content;
+  border: none;
+}
+
+.tab {
+  zoom: 1.11803398875;
+}
+
+.nav-link {
+  border: none;
+  color: white !important;
+}
+
+button.active {
+  border-bottom: solid 1px red;
+}
+
+.nav-tabs .nav-link {
+  height: max-content;
+  width: max-content;
+}
+
+.nav-tabs .nav-link.active {
+  border: none;
+  background-color: rgb(8, 12, 16);
+  border-bottom: solid 4px #ff7769;
+  color: #ff7769 !important;
+}
+
+.nav-tabs {
+  border: none;
+}
+
+button.nav-link:hover {
+  border: none;
+}
+
+li:hover {
+  background-color: rgb(58, 62, 66);
+}
+
+.tab-content {
+  border: solid 1px rgb(58, 62, 66);
+  height: fit-content;
+}

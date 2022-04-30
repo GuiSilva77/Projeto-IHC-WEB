@@ -1,0 +1,10 @@
+﻿@import url('../css/style/nav.css');
+
+
+.bg-dark {
+    background-color: rgb(8, 12, 16) !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}

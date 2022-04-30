@@ -1,8 +1,191 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@section Styles {
+    <link rel="stylesheet" href="~/css/style/main-section.css" />
+    <link rel="stylesheet" href="~/css/style/film-row.css" />
+    <link rel="stylesheet" href="~/css/style/session-table.css" />
+    <link rel="stylesheet" href="~/css/style/footer.css" />
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model Projeto_IHC.Models.HomeModel 
+
+
+<section id="home" class="m-3 mt-0">
+    <div class="main-card">
+        <div>
+            <p class="h1 text-white">Duna</p>
+            <p class="text-white">Estreia em todas as salas</p>
+            <button class="btn btn-dark" href="/Filme/@Html.DisplayFor(item => item.filmesEmCartaz.First().Id)">Saiba Mais</button>
+        </div>
+    </div>
+</section>
+
+<section id="emcartaz" class="flex-column m-3">
+    <p class="h2 text-white">Filmes Em cartaz</p>
+    <div class="row m-0 flex-nowrap" style="overflow-x: scroll">
+        @foreach (var item in Model.filmesEmCartaz)
+        {
+            <div class="f-card" style="background-image: url('@Html.DisplayFor(modelItem => item.UrlImagem )');">
+                <div>
+                    <p>@Html.DisplayFor(modelItem => item.Nome)</p>
+                    <a class="btn btn-dark" href="/Filme/@Html.DisplayFor(Modelitem => item.Id)">Saiba Mais</a>
+                </div>
+            </div> 
+        }
+    </div>
+</section>
+
+<section id="embreve" class="flex-column m-3">
+    <p class="h2 text-white">Em Breve</p>
+    <div class="row m-0 flex-nowrap" style="overflow-x: scroll">
+        @foreach (var item in Model.filmesEmBreve)
+        {
+            <div class="f-card" style="background-image: url('@Html.DisplayFor(modelItem => item.UrlImagem)');">
+                <div>
+                    <p>@Html.DisplayFor(modelItem => item.Nome)</p>
+                    <button class="btn btn-dark">Saiba Mais</button>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="sec m-3">
+    <p class="h2 text-white">Sessões</p>
+    <div class="tab">
+        <ul class="nav nav-tabs d-sm-flex" id="myTab" role="tablist">
+            <li class="nav-item d-flex flex-grow-1" role="presentation">
+                <button class="nav-link active flex-grow-1"
+                        id="home-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#home"
+                        type="button"
+                        role="tab"
+                        aria-controls="home"
+                        aria-selected="true">
+                    Hoje
+                </button>
+            </li>
+            <div class="vr"></div>
+            <li class="nav-item d-flex flex-grow-1" role="presentation">
+                <button class="nav-link flex-grow-1"
+                        id="profile-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#profile"
+                        type="button"
+                        role="tab"
+                        aria-controls="profile"
+                        aria-selected="false">
+                    Amanhã
+                </button>
+            </li>
+            <div class="vr"></div>
+
+            <li class="nav-item d-flex flex-grow-1" role="presentation">
+                <button class="nav-link flex-grow-1"
+                        id="contact-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#contact"
+                        type="button"
+                        role="tab"
+                        aria-controls="contact"
+                        aria-selected="false">
+                    Em Breve
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active"
+                 id="home"
+                 role="tabpanel"
+                 aria-labelledby="home-tab">
+                @foreach (var item in Model.Sessoes)
+                {
+                    <div class="m-card text-white">
+                        <p class="h5">@Html.DisplayFor(modelItem => item.Filme.Nome)</p>
+                        <p>@Html.DisplayFor(modelItem => item.Tipo)</p>
+                        <p>
+                            @Html.DisplayFor(modelItem=>item.is3D? "3D": "2D") @Html.DisplayFor(modelItem => item.Data)
+                        </p>
+                    </div>
+                }
+                <div class="divider"></div>
+                <div class="m-card text-white">
+                    <p class="h5">Movie 1</p>
+                    <p>Dublado</p>
+                    <p>
+                        2D 15:30 16:00 16:15 16:40 17:15 18:15 18:45 19:00 19:25 20:00
+                        21:20
+                    </p>
+                </div>
+            </div>
+            <div class="tab-pane fade"
+                 id="profile"
+                 role="tabpanel"
+                 aria-labelledby="profile-tab">
+                <div class="m-card text-white">
+                    <p class="h5">Movie 1</p>
+                    <p>Dublado</p>
+                    <p>
+                        2D 15:30 16:00 16:15 16:40 17:15 18:15 18:45 19:00 19:25 20:00
+                        21:20
+                    </p>
+                </div>
+                <div class="divider"></div>
+                <div class="m-card text-white">
+                    <p class="h5">Movie 1</p>
+                    <p>Dublado</p>
+                    <p>
+                        2D 15:30 16:00 16:15 16:40 17:15 18:15 18:45 19:00 19:25 20:00
+                        21:20
+                    </p>
+                </div>
+            </div>
+            <div class="tab-pane fade"
+                 id="contact"
+                 role="tabpanel"
+                 aria-labelledby="contact-tab">
+                <div class="m-card text-white">
+                    <p class="h5">Movie 1</p>
+                    <p>Dublado</p>
+                    <p>
+                        2D 15:30 16:00 16:15 16:40 17:15 18:15 18:45 19:00 19:25 20:00
+                        21:20
+                    </p>
+                </div>
+                <div class="divider"></div>
+                <div class="m-card text-white">
+                    <p class="h5">Movie 1</p>
+                    <p>Dublado</p>
+                    <p>
+                        2D 15:30 16:00 16:15 16:40 17:15 18:15 18:45 19:00 19:25 20:00
+                        21:20
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer mt-3">
+    <div class="row m-0">
+        <div class="col-sm-4 container d-flex flex-column">
+            <a href="" class="nav-link f-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="" class="nav-link f-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="" class="nav-link f-link"><i class="fa-solid fa-mobile"></i> Celular: (16) 99999-9999</a>
+            <a href="" class="nav-link f-link"><i class="fa-solid fa-phone"></i> Telefone: (16) 3333-3333</a>
+        </div>
+        <div class="col-sm-4 container d-flex flex-column">
+            <a href="" class="nav-link f-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="" class="nav-link f-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="" class="nav-link f-link"><i class="fa-solid fa-mobile"></i> Celular: (16) 99999-9999</a>
+            <a href="" class="nav-link f-link"><i class="fa-solid fa-phone"></i> Telefone: (16) 3333-3333</a>
+        </div>
+        <div class="col-sm-4 container d-flex flex-column">
+            <a href="" class="nav-link f-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="" class="nav-link f-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="" class="nav-link f-link"><i class="fa-solid fa-mobile"></i> Celular: (16) 99999-9999</a>
+            <a href="" class="nav-link f-link"><i class="fa-solid fa-phone"></i> Telefone: (16) 3333-3333</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://kit.fontawesome.com/0edd786e2e.js"></script>

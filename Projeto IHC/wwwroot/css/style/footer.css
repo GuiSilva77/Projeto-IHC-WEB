@@ -1,0 +1,19 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.bg-dark {
+    background-color: rgb(8, 12, 16) !important;
+}
+
+.f-link {
+  color: #efefef;
+  padding: 1em;
+}
+
+.f-link:hover {
+  background-color: rgb(38, 42, 46);
+}
+
+.footer {
+  background-color: rgb(28, 32, 36);
+  padding: 1em;
+}
