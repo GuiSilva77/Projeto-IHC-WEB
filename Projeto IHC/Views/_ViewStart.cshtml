@@ -1,3 +1,14 @@
-﻿@{
-    Layout = "_Layout";
+﻿@{ 
+    string CurrentName = Convert.ToString(this.ViewContext.RouteData.Values["Controller"].ToString());
+    switch(CurrentName)
+    {
+        case "Home":
+            Layout = "~/Views/Shared/_HomeLayout.cshtml";
+            break;
+        case "Filme":
+            Layout = "~/Views/Shared/_HomeLayout.cshtml";
+            break;
+        default:
+            break;
+    }
 }

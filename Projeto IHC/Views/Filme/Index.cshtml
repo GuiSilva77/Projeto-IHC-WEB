@@ -1,0 +1,41 @@
+﻿@model Projeto_IHC.Models.FilmeModel
+<style>
+
+body {
+  scroll-behavior: smooth;
+  font-family: var(--bs-body-font-family);
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+}
+
+.poster {
+  width: 15em;
+  height: 100%;
+  aspect-ratio: 2/3;
+}
+
+.card-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+  @media (min-width:768px) {
+  .pr-md-5 {
+    padding-right: 14rem !important;
+  }
+}
+
+</style> 
+
+<section class="card d-flex flex-md-row flex-column justify-content-center align-items-center bg-dark">
+    <div><img class="poster" src="@Model.Filme.UrlImagem" alt="" id="cardPoster"></div>
+    <div class="container-fluid">
+        <div>
+            <h1 class="card-title">@Model.Filme.Nome</h1>
+            <p> Ano: 1999</p>
+            <p>Diretor: Ridley Scott</p>
+        </div>
+        <p class="text-start pr-md-5 m-md-0">Um homem deprimido que sofre de insônia conhece um estranho vendedor de sabonetes chamado Tyler Durden. Eles formam um clube clandestino com regras rígidas onde lutam com outros homens cansados de suas vidas mundanas. Mas sua parceria perfeita é comprometida quando Marla chama a atenção de Tyler.</p>
+    </div>
+</section>

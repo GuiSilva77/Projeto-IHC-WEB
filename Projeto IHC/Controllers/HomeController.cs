@@ -13,41 +13,19 @@ namespace Projeto_IHC.Controllers
 {
     public class HomeController : Controller
     {
-        public Filme GetFilme()
-        {
-            return new Filme(1, "Flash", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg");
-        }
-
-        public HomeModel GenerateContent()
-        {
-            HomeModel conteudo = new HomeModel();
-
-            conteudo.filmesEmCartaz.Add(GetFilme());
-            conteudo.filmesEmCartaz.Add(GetFilme());
-
-            conteudo.filmesEmBreve.Add(GetFilme());
-            conteudo.filmesEmBreve.Add(GetFilme());
-
-
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 04, 30, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, true));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 04, 30, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, true));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 04, 30, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, true));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 05, 1, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, false));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 05, 1, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, false));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 05, 1, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, true));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 05, 2, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, true));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 05, 1, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, true));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 05, 2, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, false));
-            conteudo.Sessoes.Add(new Sessao(1, GetFilme(), new DateTime(2022, 05, 2, 18, 30, 00, DateTimeKind.Local), 1, Sessao.Audio.Dublado, false));
-
-
-
-            return conteudo;
-        }
-
         public IActionResult Index()
         {
-            HomeModel filmes = GenerateContent();
+            HomeModel filmes = new HomeModel();
+            filmes.filmesEmCartaz = new List<Filme>();
+            filmes.filmesEmCartaz = new List<Filme>();
+            filmes.Sessoes = new List<Sessao>(1);
+
+           for (int i = 0; i < 5; i++)
+            {
+                Filme filme = new Filme(1);
+                filmes.filmesEmCartaz.Add(filme);
+                filmes.filmesEmBreve.Add(filme);
+            }
             return View(filmes);
         }
 
