@@ -13,20 +13,20 @@ namespace Projeto_IHC.Controllers
 {
     public class HomeController : Controller
     {
-        public readonly Contexto db;
-        public HomeController(Contexto _db)
-        {
-            db = _db;
-        }
         public IActionResult Index()
         {
-            HomeModel HM = new HomeModel();
-            for (int i = 0; i < 5; i++)
+            HomeModel filmes = new HomeModel();
+            filmes.filmesEmCartaz = new List<Filme>();
+            filmes.filmesEmCartaz = new List<Filme>();
+            filmes.Sessoes = new List<Sessao>(1);
+
+           for (int i = 0; i < 5; i++)
             {
-                HM.filmesEmBreve.Add(db.FILMES.Where(a => a.Id == 1).FirstOrDefault());
-                HM.filmesEmCartaz.Add(db.FILMES.Where(a => a.Id == 1).FirstOrDefault());
+                Filme filme = new Filme(1);
+                filmes.filmesEmCartaz.Add(filme);
+                filmes.filmesEmBreve.Add(filme);
             }
-            return View(HM);
+            return View(filmes);
         }
 
         public IActionResult Privacy()

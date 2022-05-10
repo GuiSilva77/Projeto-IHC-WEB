@@ -23,10 +23,10 @@
     <div class="row m-0 flex-nowrap" style="overflow-x: scroll">
         @foreach (var item in Model.filmesEmCartaz)
         {
-            <div class="f-card" style="background-image: url('@Html.DisplayFor(modelItem => item.URLPoster)');">
+            <div class="f-card" style="background-image: url('@Html.DisplayFor(modelItem => item.UrlImagem)');">
                 <div>
                     <p>@Html.DisplayFor(modelItem => item.Nome)</p>
-                    <a class="btn btn-dark" href="/Filme/@item.Id">Saiba Mais</a>
+                    <a class="btn btn-dark" href="/Filme">Saiba Mais</a>
                 </div>
             </div> 
         }
@@ -38,7 +38,7 @@
     <div class="row m-0 flex-nowrap" style="overflow-x: scroll">
         @foreach (var item in Model.filmesEmBreve)
         {
-            <div class="f-card" style="background-image: url('@Html.DisplayFor(modelItem => item.URLPoster)');">
+            <div class="f-card" style="background-image: url('@Html.DisplayFor(modelItem => item.UrlImagem)');">
                 <div>
                     <p>@Html.DisplayFor(modelItem => item.Nome)</p>
                     <button class="btn btn-dark">Saiba Mais</button>

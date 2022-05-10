@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,9 +23,6 @@ namespace Projeto_IHC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<Contexto>(a => a.UseSqlServer(
-                "Server=c3po;Database=0220482113028;Trusted_Connection=True;"
-                ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,9 +36,6 @@ namespace Projeto_IHC
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
-            app.UseStatusCodePages();
-
             app.UseStaticFiles();
 
             app.UseRouting();
