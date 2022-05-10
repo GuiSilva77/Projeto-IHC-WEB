@@ -1,35 +1,12 @@
-﻿@model Projeto_IHC.Models.FilmeModel
-<style>
+﻿@section Styles {
+    <link rel="stylesheet" href="~/css/Filme.css" />
+} 
 
-body {
-  scroll-behavior: smooth;
-  font-family: var(--bs-body-font-family);
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
-}
+@model Projeto_IHC.Models.FilmeModel
 
-.poster {
-  width: 15em;
-  height: 100%;
-  aspect-ratio: 2/3;
-}
-
-.card-title {
-  font-size: 4rem;
-  font-weight: bold;
-  color: whitesmoke;
-}
-
-  @media (min-width:768px) {
-  .pr-md-5 {
-    padding-right: 14rem !important;
-  }
-}
-
-</style> 
 
 <section class="card d-flex flex-md-row flex-column justify-content-center align-items-center bg-dark">
-    <div><img class="poster" src="@Model.Filme.UrlImagem" alt="" id="cardPoster"></div>
+    <div><img class="poster" src="@Model.Filme.URLPoster" alt="" id="cardPoster"></div>
     <div class="container-fluid">
         <div>
             <h1 class="card-title">@Model.Filme.Nome</h1>
