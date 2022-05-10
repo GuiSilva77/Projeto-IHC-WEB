@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Projeto_IHC.Entidades;
+using Projeto_IHC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +10,17 @@ namespace Projeto_IHC.Controllers
 {
     public class FilmeController : Controller
     {
-        public IActionResult Index(int Id)
+        public readonly Contexto db;
+        public FilmeController(Contexto _db)
         {
-            Models.FilmeModel filme = new Models.FilmeModel();
-            filme.Filme = new Entidades.Filme(1);
-            return View(filme);
+            db = _db;
+        }
+
+        public IActionResult Index(int id)
+        {
+            FilmeModel FM = new FilmeModel();
+            FM.Filme = db.FILMES.Where(a => a.Id == id).FirstOrDefault();
+            return View(FM);
         }
     }
 }
