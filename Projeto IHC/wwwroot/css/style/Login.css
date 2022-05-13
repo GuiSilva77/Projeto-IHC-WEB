@@ -1,0 +1,27 @@
+﻿
+
+/* fill the entire page */
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.container {
+    width: 50vh;
+    background-color: rgb(20, 24, 28);
+    padding: 0;
+    border: 1px solid rgba(158, 162, 166, 0.418);
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(158, 162, 166, 0.418);
+}
