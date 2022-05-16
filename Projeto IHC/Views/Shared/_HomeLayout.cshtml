@@ -4,56 +4,95 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Projeto_IHC</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/Layout.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css"  asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style/config.css"  asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style/nav.css"  asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style/footer.css"  asp-append-version="true"/>
     @RenderSection("Styles", false)
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand txt" href="#">CINEPLEX</a>
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#emcartaz">Em Cartaz</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#embreve">Em Breve</a>
-                        </li>
-                    </ul>
+<body class="bg-dark position-relative"
+    data-bs-spy="scroll"
+    data-bs-target="navbar"
+    data-bs-offset="0"
+    tabindex="0">
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand txt" href="#">
+                <img src="~/img/logo.svg" alt="logo" class="logo" />
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item nav-btn">
+                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item nav-btn">
+                        <a class="nav-link active"
+                           aria-current="page"
+                           href="/home/#emcartaz">Em Cartaz</a>
+                    </li>
+                    <li class="nav-item nav-btn">
+                        <a class="nav-link active"
+                           aria-current="page"
+                           href="/home/#embreve">Em Breve</a>
+                    </li>
+                </ul>
 
-                    <div class="nav-item text-white d-flex align-items-center justify-content-start">
-                        <a class="btn btn-outline-light" href="Usuarios/Cadastrar">Cadastre-se</a>
-                        <a class="ps-2" href="/Usuarios/Login">Fazer Login</a>
-                        
-                    </div>
+                <div class="nav-item text-white d-flex align-items-center justify-content-start">
+                    <button class="btn btn-outline-light">Cadastre-se</button>
+                    <a class="ps-2" href="">Fazer Login</a>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="bg-dark">
+        </div>
+    </nav>
+    <main>
         @RenderBody()
-    </div>
+    </main>
     <footer class="footer mt-3">
-        <div class="d-flex flex-start flex-column">
-                <p>Endereço: Rua Flávio Augusto, 189 - Jardim Saint Laurrent - Taquaritinga </p>
-                <a href="" class="nav-link f-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
-                <a href="" class="nav-link f-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="" class="nav-link f-link"><i class="fa-solid fa-mobile"></i> Celular: (16) 99999-9999</a>
-                <a href="" class="nav-link f-link"><i class="fa-solid fa-phone"></i> Telefone: (16) 3333-3333</a>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/img/logo.svg" class="logo-footer" />
+                <p>
+                    Com a missão de proporcionar aos clientes a melhor experiência de
+                    entretenimento e acesso aos melhores filmes, CINEPLEX é uma empresa
+                    que se preocupa com a qualidade de seus serviços. <br />
+                    Com três salas de cinema climatizadas, sistema de audio e de video
+                    de ótima qualidade, CINEPLEX oferece aos seus clientes a melhor
+                    experiência de entretenimento.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h3>Contato</h3>
+                <p>
+                    Endereço: Rua Flávio Augusto, 189- Jardim Saint Laurent,
+                    Taquaritinga
+                </p>
+                <p><i class="fa-solid fa-phone"></i> (16) 3333-3333</p>
+                <div class="d-flex justify-content-start">
+                    <a href="" class="nav-link f-link">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="" class="nav-link f-link">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="" class="nav-link f-link">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center pt-3">
+            <small class="text-white text-center">
+                Copyright 2022 Cineplex Ldta. Todos os direitos reservados.
+            </small>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

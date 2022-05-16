@@ -5,3 +5,21 @@ a {
 .txt {
   font-family: "Broadway";
 }
+
+nav {
+  background-color: var(--color-secondary);
+}
+
+.navbar-brand {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.nav-btn:hover {
+  background-color: #910d11;
+}
+
+.logo {
+  width: 20vh;
+  height: auto;
+}

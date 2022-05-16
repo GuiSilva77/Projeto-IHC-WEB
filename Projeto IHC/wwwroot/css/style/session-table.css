@@ -9,7 +9,27 @@
 }
 
 .m-card {
+  display: flex;
+  justify-content: space-between;
   padding: 1em;
+}
+
+.m-card > p {
+  margin: 0;
+  text-align: center !important;
+}
+
+.btn-comprar {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.m-card:hover {
+  background-color: rgb(28, 32, 36);
+}
+
+.m-card:hover .btn-comprar {
+  opacity: 1;
 }
 
 .sec {
@@ -55,6 +75,6 @@ li:hover {
 }
 
 .tab-content {
-  border: solid 1px rgb(58, 62, 66);
+  border-top: solid 1px rgb(58, 62, 66);
   height: fit-content;
 }

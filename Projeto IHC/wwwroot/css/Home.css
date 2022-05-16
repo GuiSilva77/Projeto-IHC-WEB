@@ -1,0 +1,51 @@
+﻿
+.faixa {
+    padding: 0 !important;
+    background-image: url("https://imagens.ebc.com.br/13Dt2Ma-qOBn-VnP4mPjlL-t2E4=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/sala_de_cinemaagencia_brasilia31122000938.jpg?itok=63-Wfr8L");
+    /*background image is centered*/
+    background-origin: content-box;
+    /*background image is stretched*/
+    background-size: cover;
+    /*background image is repeated*/
+    background-repeat: no-repeat;
+    /*background image is fixed*/
+    background-attachment: fixed;
+    /*background image is centered*/
+    background-position: center;
+    color: white;
+    width: auto;
+}
+
+    .faixa > .row {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 4em;
+        padding-bottom: 4em;
+        background: linear-gradient( to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1) );
+    }
+
+    .faixa h2 {
+        font-size: 3em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+
+    .faixa p {
+        font-size: 1.5em;
+        margin-bottom: 0.5em !important;
+    }
+
+.faixa-link {
+    color: white;
+    text-decoration: none;
+    width: max-content;
+    padding-left: 0.5em !important;
+    margin-left: 0.5em !important;
+    padding: 1em;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+    .faixa-link:hover {
+        background-color: rgba(28, 32, 36, 0.596);
+    }

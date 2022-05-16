@@ -1,12 +1,8 @@
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
-.bg-dark {
-    background-color: rgb(8, 12, 16) !important;
-}
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 .f-link {
   color: #efefef;
-  padding-left: 0;
+  padding: 1em;
 }
 
 .f-link:hover {
@@ -14,6 +10,20 @@
 }
 
 .footer {
-  background-color: rgb(28, 32, 36);
+  background-color: rgb(4, 8, 12);
   padding: 1em;
+}
+
+footer.footer > p {
+  margin-bottom: 0 !important;
+}
+
+.logo-footer {
+  width: 20vh;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+footer p {
+  margin-bottom: 0.25em;
 }

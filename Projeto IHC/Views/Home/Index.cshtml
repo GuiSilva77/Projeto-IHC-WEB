@@ -1,49 +1,84 @@
 ﻿
 @section Styles {
-    <link rel="stylesheet" href="~/css/style/main-section.css" />
-    <link rel="stylesheet" href="~/css/style/film-row.css" />
-    <link rel="stylesheet" href="~/css/style/session-table.css" />
+    <link rel="stylesheet" href="~/css/style/main-section.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style/film-row.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style/session-table.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/Home.css" asp-append-version="true"/>
 }
 
-@model Projeto_IHC.Models.HomeModel 
-
-
-<section id="home" class="m-3 mt-0">
+<section id="home" class="destaque mt-3">
     <div class="main-card">
         <div>
             <p class="h1 text-white">Duna</p>
             <p class="text-white">Estreia em todas as salas</p>
-            <button class="btn btn-dark" href="/Filme/@Html.DisplayFor(item => item.filmesEmCartaz.First().Id)">Saiba Mais</button>
+            <button class="btn btn-dark">Saiba Mais</button>
         </div>
     </div>
 </section>
 
-<section id="emcartaz" class="flex-column m-3">
-    <p class="h2 text-white">Filmes Em cartaz</p>
-    <div class="row m-0 flex-nowrap" style="overflow-x: scroll">
-        @foreach (var item in Model.filmesEmCartaz)
-        {
-            <div class="f-card" style="background-image: url('@Html.DisplayFor(modelItem => item.URLPoster)');">
-                <div>
-                    <p>@Html.DisplayFor(modelItem => item.Nome)</p>
-                    <a class="btn btn-dark" href="/Filme/@item.Id">Saiba Mais</a>
-                </div>
-            </div> 
-        }
+<section class="faixa mt-3">
+    <div class="row">
+        <h2>Programação</h2>
+        <p>
+            Veja a nossa programação para aproveitar o máximo que podemos
+            oferecer.
+        </p>
+        <a class="faixa-link text-white" href="/home/programacao">
+            Veja a Programação <i class="fa-solid fa-chevron-right"></i>
+        </a>
     </div>
 </section>
 
-<section id="embreve" class="flex-column m-3">
+<section id="embreve" class="flex-column mt-3">
     <p class="h2 text-white">Em Breve</p>
     <div class="row m-0 flex-nowrap" style="overflow-x: scroll">
-        @foreach (var item in Model.filmesEmBreve)
-        {
-            <div class="f-card" style="background-image: url('@Html.DisplayFor(modelItem => item.URLPoster)');">
-                <div>
-                    <p>@Html.DisplayFor(modelItem => item.Nome)</p>
-                    <button class="btn btn-dark">Saiba Mais</button>
-                </div>
+        <div class="f-card">
+            <div>
+                <p>Duna</p>
+                <button class="btn btn-dark">Saiba Mais</button>
             </div>
-        }
+        </div>
+        <div class="f-card">
+            <div>
+                <p>Duna</p>
+                <button class="btn btn-dark">Saiba Mais</button>
+            </div>
+        </div>
+        <div class="f-card">
+            <div>
+                <p>Duna</p>
+                <button class="btn btn-dark">Saiba Mais</button>
+            </div>
+        </div>
+        <div class="f-card">
+            <div>
+                <p>Duna</p>
+                <button class="btn btn-dark">Saiba Mais</button>
+            </div>
+        </div>
+        <div class="f-card">
+            <div>
+                <p>Duna</p>
+                <button class="btn btn-dark">Saiba Mais</button>
+            </div>
+        </div>
+        <div class="f-card">
+            <div>
+                <p>Duna</p>
+                <button class="btn btn-dark">Saiba Mais</button>
+            </div>
+        </div>
+        <div class="f-card">
+            <div>
+                <p>Duna</p>
+                <button class="btn btn-dark">Saiba Mais</button>
+            </div>
+        </div>
+        <div class="f-card">
+            <div>
+                <p>Duna</p>
+                <button class="btn btn-dark">Saiba Mais</button>
+            </div>
+        </div>
     </div>
 </section>
