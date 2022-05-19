@@ -1,0 +1,27 @@
+﻿
+.poster {
+    width: auto;
+    height: 6em;
+    aspect-ratio: 2/3;
+}
+
+.div-poster {
+    margin: auto;
+}
+
+p {
+    margin: 0 !important;
+}
+
+.filme {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.filme:hover {
+    background-color: rgb(38, 42, 46);
+}
+
+thead {
+    border-bottom: solid 1px rgba(184, 184, 184, 0.753);
+}

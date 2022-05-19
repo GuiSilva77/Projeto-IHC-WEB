@@ -10,9 +10,24 @@
     <div class="container-fluid">
         <div>
             <h1 class="card-title">@Model.Filme.Nome</h1>
-            <p> Ano: 1999</p>
-            <p>Diretor: Ridley Scott</p>
+            <p> Ano: @Model.Filme.Ano</p>
+            <p>Diretor: @Model.Filme.Diretor</p>
         </div>
-        <p class="text-start pr-md-5 m-md-0">Um homem deprimido que sofre de insônia conhece um estranho vendedor de sabonetes chamado Tyler Durden. Eles formam um clube clandestino com regras rígidas onde lutam com outros homens cansados de suas vidas mundanas. Mas sua parceria perfeita é comprometida quando Marla chama a atenção de Tyler.</p>
+        <p class="text-start pr-md-5 m-md-0">@Model.Filme.Resumo</p>
+    </div>
+</section>
+<section>
+    <div class="d-flex flex-lg-row flex-column">
+        <div class="container-xlg m-3 col-lg-7">
+            <p class="h2 text-white">Trailer</p>
+            <iframe src="@Model.Filme.URLTrailer"
+                    title="@Model.Filme.Nome Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+                    allowfullscreen
+                    class="yt-frame">
+
+            </iframe>
+        </div>
     </div>
 </section>

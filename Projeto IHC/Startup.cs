@@ -24,9 +24,15 @@ namespace Projeto_IHC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpClient();
             services.AddDbContext<Contexto>(a => a.UseSqlServer(
-                "Server=c3po;Database=0220482113028;Trusted_Connection=True;"
+                "Server=localhost\\SQLEXPRESS;Database=0220482113028;Trusted_Connection=True;"
                 ));
+            services.AddAuthentication("CookieAuthentication")
+                .AddCookie("CookieAuthentication", options => {
+                    options.AccessDeniedPath = "/Usuario/Ops";
+                    options.LoginPath = "/Usuario/Entrar";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +53,7 @@ namespace Projeto_IHC
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -1,4 +1,9 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Cineplex";
+}
+
+@model HomeModel
+
 @section Styles {
     <link rel="stylesheet" href="~/css/style/main-section.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/style/film-row.css" asp-append-version="true"/>
@@ -7,11 +12,11 @@
 }
 
 <section id="home" class="destaque mt-3">
-    <div class="main-card">
+    <div class="main-card" style="background-image: url('@Model.FilmeDestaque.URLCapa')">
         <div>
-            <p class="h1 text-white">Duna</p>
+            <p class="h1 text-white">@Model.FilmeDestaque.Nome</p>
             <p class="text-white">Estreia em todas as salas</p>
-            <button class="btn btn-dark">Saiba Mais</button>
+            <a class="btn btn-dark" href="/Filme/Index/@Model.FilmeDestaque.Id">Saiba Mais</a>
         </div>
     </div>
 </section>
@@ -23,62 +28,25 @@
             Veja a nossa programação para aproveitar o máximo que podemos
             oferecer.
         </p>
-        <a class="faixa-link text-white" href="/home/programacao">
+        <a class="faixa-link text-white" href="/Home/Programacao">
             Veja a Programação <i class="fa-solid fa-chevron-right"></i>
         </a>
     </div>
 </section>
 
 <section id="embreve" class="flex-column mt-3">
-    <p class="h2 text-white">Em Breve</p>
-    <div class="row m-0 flex-nowrap" style="overflow-x: scroll">
-        <div class="f-card">
-            <div>
-                <p>Duna</p>
-                <button class="btn btn-dark">Saiba Mais</button>
-            </div>
-        </div>
-        <div class="f-card">
-            <div>
-                <p>Duna</p>
-                <button class="btn btn-dark">Saiba Mais</button>
-            </div>
-        </div>
-        <div class="f-card">
-            <div>
-                <p>Duna</p>
-                <button class="btn btn-dark">Saiba Mais</button>
-            </div>
-        </div>
-        <div class="f-card">
-            <div>
-                <p>Duna</p>
-                <button class="btn btn-dark">Saiba Mais</button>
-            </div>
-        </div>
-        <div class="f-card">
-            <div>
-                <p>Duna</p>
-                <button class="btn btn-dark">Saiba Mais</button>
-            </div>
-        </div>
-        <div class="f-card">
-            <div>
-                <p>Duna</p>
-                <button class="btn btn-dark">Saiba Mais</button>
-            </div>
-        </div>
-        <div class="f-card">
-            <div>
-                <p>Duna</p>
-                <button class="btn btn-dark">Saiba Mais</button>
-            </div>
-        </div>
-        <div class="f-card">
-            <div>
-                <p>Duna</p>
-                <button class="btn btn-dark">Saiba Mais</button>
-            </div>
-        </div>
+    <p class="h2 text-white text-center">Em Breve</p>
+    <div class="row m-0 flex-nowrap overflow-auto justify-content-center">
+        @{ 
+            foreach (var item in Model.filmesEmBreve)
+            {
+                <div class="f-card" style="background-image: url(@item.URLPoster)">
+                    <div>
+                        <p>@item.Nome</p>
+                        <a class="btn btn-dark" href="/Filme/Index/@item.Id">Saiba Mais</a>
+                    </div>
+                </div>
+            }
+        }
     </div>
 </section>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Projeto_IHC;
 
 namespace Projeto_IHC.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20220519140342_M2")]
+    partial class M2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,13 +31,7 @@ namespace Projeto_IHC.Migrations
                     b.Property<string>("Ano")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Classificacao")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Diretor")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Duracao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")

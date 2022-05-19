@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 namespace Projeto_IHC.Models
 {
     public class HomeModel
-    {
-        public List<Entidades.Filme> filmesEmCartaz = new List<Entidades.Filme>();
+    { 
+        public Entidades.Filme FilmeDestaque { get; set; }
         public List<Entidades.Filme> filmesEmBreve = new List<Entidades.Filme>();
-        public List<Entidades.Sessao> Sessoes = new List<Entidades.Sessao>();
     }
 }

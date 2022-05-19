@@ -11,8 +11,7 @@ namespace Projeto_IHC.Entidades
         public string Email { get; set; }
         public string Senha { get; set; }
         public string Nome { get; set; }
-        public string Sobrenome { get; set; }
-        public List<Sessao> Bilhetes { get; set; }
-        public int CPF { get; set; }
+        public DateTime DataCriacao { get; set; }
+        public DateTime UltimaVezOnline { get; set;}
     }
 }

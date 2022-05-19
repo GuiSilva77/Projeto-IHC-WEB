@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Projeto_IHC</title>
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/img/logo-black.svg" />
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css"  asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/style/config.css"  asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/style/nav.css"  asp-append-version="true"/>
@@ -17,7 +18,7 @@
     tabindex="0">
     <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand txt" href="#">
+            <a class="navbar-brand txt" href="/Home/">
                 <img src="~/img/logo.svg" alt="logo" class="logo" />
             </a>
             <button class="navbar-toggler"
@@ -31,25 +32,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item nav-btn">
-                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    <li class="nav-item nav-btn mx-2">
+                        <a class="nav-link active" aria-current="page" href="/home/programacao">Programação</a>
                     </li>
-                    <li class="nav-item nav-btn">
+                    <li class="nav-item nav-btn mx-2">
                         <a class="nav-link active"
                            aria-current="page"
-                           href="/home/#emcartaz">Em Cartaz</a>
+                           href="/home/#emcartaz">Em breve</a>
                     </li>
-                    <li class="nav-item nav-btn">
+                    <li class="nav-item nav-btn mx-2">
                         <a class="nav-link active"
                            aria-current="page"
-                           href="/home/#embreve">Em Breve</a>
+                           href="/home/info">Sobre Nós</a>
                     </li>
                 </ul>
 
-                <div class="nav-item text-white d-flex align-items-center justify-content-start">
-                    <button class="btn btn-outline-light">Cadastre-se</button>
-                    <a class="ps-2" href="">Fazer Login</a>
-                </div>
+                
             </div>
         </div>
     </nav>

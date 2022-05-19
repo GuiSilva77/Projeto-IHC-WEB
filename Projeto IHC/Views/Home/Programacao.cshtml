@@ -1,0 +1,86 @@
+﻿@{ 
+    ViewData["Title"] = "Programação";
+}
+
+@model ProgramacaoModel
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Programacao.css" />
+}
+
+<section>
+    <div class="d-flex flex-column px-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Programação</h1>
+            </div>
+        </div>
+        <div class="overflow-auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th><div class="px-3 text-center">Filme</div></th>
+                        <th><div class="px-3 text-center">Sala</div></th>
+                        <th><div class="px-3 text-center">Horário</div></th>
+                        <th><div class="px-3 text-center">Classificação</div></th>
+                        <th><div class="px-3 text-center">DOM</div></th>
+                        <th><div class="px-3 text-center">SEG</div></th>
+                        <th><div class="px-3 text-center">TER</div></th>
+                        <th><div class="px-3 text-center">QUA</div></th>
+                        <th><div class="px-3 text-center">QUI</div></th>
+                        <th><div class="px-3 text-center">SEX</div></th>
+                        <th><div class="px-3 text-center">SÁB</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Sessoes)
+                     {
+                        <tr>
+                            <td>
+                                <a class="d-flex filme" href="/Filme/Index/@item.Filme.Id">
+                                    <div class="div-poster">
+                                        <img src="@item.Filme.URLPoster"
+                                                alt="Poster"
+                                                class="poster" />
+                                    </div>
+                                    <div class="d-flex flex-column mx-3 my-2">
+                                        <h3>@item.Filme.Nome</h3>
+
+                                        <p>
+                                            <span class="text-primary">Duração:</span>
+                                            @item.Filme.Duracao
+                                        </p>
+                                        <p>
+                                            <span class="text-primary">Audio:</span>
+                                            @item.Audio
+                                        </p>
+                                    </div>
+                                </a>
+                            </td>
+                            <td><div class="px-3 text-center">@item.Sala</div></td>
+                            <td><div class="px-3 text-center">@item.Horario</div></td>
+                            <td><div class="px-3 text-center">@item.Filme.Classificacao</div></td>
+                            @foreach (var data in item.DiasSemana)
+                             {
+                                if (data == '1')
+                                {
+                                <td>
+                                    <div class="d-flex justify-content-center px-3">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                </td> 
+                                }
+                                else
+                                {
+                                <td>
+                                    <div class="d-flex justify-content-center px-3"></div>
+                                </td>
+                                }
+                             }
+                        </tr>
+                     }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

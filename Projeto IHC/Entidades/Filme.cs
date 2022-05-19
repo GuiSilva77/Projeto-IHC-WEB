@@ -15,6 +15,9 @@ namespace Projeto_IHC.Entidades
         public string Diretor { get; set; }
         public string Ano { get; set; }
         public string Resumo { get; set; }
-
+        public bool emCartaz { get; set; }
+        public bool emBreve { get; set; }
+        public string Classificacao { get; set; }
+        public string Duracao { get; set; }
     }
 }
