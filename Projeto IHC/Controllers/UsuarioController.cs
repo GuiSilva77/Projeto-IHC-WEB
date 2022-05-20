@@ -14,7 +14,7 @@ namespace Projeto_IHC.Controllers
 
         public UsuarioController(Contexto _db)
         {
-            _db = db;
+            db = _db;
         }
 
         public IActionResult Index()
@@ -60,11 +60,26 @@ namespace Projeto_IHC.Controllers
                 principal, new AuthenticationProperties()
                 );
 
+            UsuarioLogado.UltimaVezOnline = DateTime.Now;
+            db.USUARIOS.Update(UsuarioLogado);
+            db.SaveChanges();
+
+            ViewBag.UserName = UsuarioLogado.Nome;
+
             return Redirect("/Admin/");
         }
 
         public async Task<IActionResult> Sair()
         {
+            string NomeUsuario = HttpContext.User.Identity.Name;
+
+            Entidades.Usuario UsuarioLogado = db.USUARIOS.Where(a => a.Nome == NomeUsuario).FirstOrDefault();
+            UsuarioLogado.UltimaVezOnline = DateTime.Now;
+            db.USUARIOS.Update(UsuarioLogado);
+            db.SaveChanges();
+
+            ViewBag.Username = null;
+
             await HttpContext.SignOutAsync("CookieAuthentication");
             ViewData["ReturnUrl"] = "/";
             return Redirect("/Usuario/Entrar");
