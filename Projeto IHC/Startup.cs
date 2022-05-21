@@ -26,7 +26,7 @@ namespace Projeto_IHC
             services.AddControllersWithViews();
             services.AddHttpClient();
             services.AddDbContext<Contexto>(a => a.UseSqlServer(
-                "Server=localhost\\SQLEXPRESS;Database=0220482113028;Trusted_Connection=True;"
+                "Server=c3po;Database=0220482113028;Trusted_Connection=True;"
                 ));
             services.AddAuthentication("CookieAuthentication")
                 .AddCookie("CookieAuthentication", options => {

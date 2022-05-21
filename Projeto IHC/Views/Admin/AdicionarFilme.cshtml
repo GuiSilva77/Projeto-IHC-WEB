@@ -4,78 +4,25 @@
     ViewData["Title"] = "Adicionar Filme";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="/css/AdicionarFilme.css" />
+} 
+
 <h1>Adicionar Filme</h1>
 
 <h4>Filme</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AdicionarFilme">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="URLPoster" class="control-label"></label>
-                <input asp-for="URLPoster" class="form-control" />
-                <span asp-validation-for="URLPoster" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="URLCapa" class="control-label"></label>
-                <input asp-for="URLCapa" class="form-control" />
-                <span asp-validation-for="URLCapa" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="URLTrailer" class="control-label"></label>
-                <input asp-for="URLTrailer" class="form-control" />
-                <span asp-validation-for="URLTrailer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Diretor" class="control-label"></label>
-                <input asp-for="Diretor" class="form-control" />
-                <span asp-validation-for="Diretor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ano" class="control-label"></label>
-                <input asp-for="Ano" class="form-control" />
-                <span asp-validation-for="Ano" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Resumo" class="control-label"></label>
-                <input asp-for="Resumo" class="form-control" />
-                <span asp-validation-for="Resumo" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="emCartaz" /> @Html.DisplayNameFor(model => model.emCartaz)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="emBreve" /> @Html.DisplayNameFor(model => model.emBreve)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Classificacao" class="control-label"></label>
-                <input asp-for="Classificacao" class="form-control" />
-                <span asp-validation-for="Classificacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duracao" class="control-label"></label>
-                <input asp-for="Duracao" class="form-control" />
-                <span asp-validation-for="Duracao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="d-flex flex-column">
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" type="text" id="Nome" class="form-control w-auto" required/>
+        <button id="nomeBtn" class="btn btn-outline-primary">Enviar</button>
+    </div>
+    <div class="form-group">
+        <label asp-for="URLPoster"></label>
+        <input asp-for="URLPoster" type="text" class="form-control w-auto" required />
+        <label asp-for="URLCapa"></label>
+        <input asp-for="URLCapa" type="text" class="form-control w-auto" required />
     </div>
 </div>
 
@@ -85,4 +32,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/TMDB_API.js"></script>
 }

@@ -1,0 +1,32 @@
+﻿
+input {
+    border: 1px solid rgba(158, 162, 166, 0.418);
+    background-color: rgb(20, 24, 28) !important;
+}
+
+    input:hover {
+        border: 1px solid rgba(158, 162, 166, 0.418);
+        background-color: rgb(20, 24, 28) !important;
+    }
+
+    input:focus {
+        box-shadow: none !important;
+    }
+
+.btn {
+    width: 90%;
+    height: 3rem;
+    border: 1px solid rgba(158, 162, 166, 0.418);
+    background-color: rgb(20, 24, 28) !important;
+    color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0;
+    margin-top: 1rem;
+}
+
+button:hover,
+button:focus {
+    border-color: var(--color-secondary);
+    box-shadow: none;
+}
