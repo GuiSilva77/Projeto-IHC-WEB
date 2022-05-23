@@ -24,12 +24,12 @@ namespace Projeto_IHC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddHttpClient();
             services.AddDbContext<Contexto>(a => a.UseSqlServer(
-                "Server=c3po;Database=0220482113028;Trusted_Connection=True;"
+                "Server=localhost\\SQLEXPRESS;Database=0220482113028;Trusted_Connection=True;"
                 ));
             services.AddAuthentication("CookieAuthentication")
-                .AddCookie("CookieAuthentication", options => {
+                .AddCookie("CookieAuthentication", options =>
+                {
                     options.AccessDeniedPath = "/Usuario/Ops";
                     options.LoginPath = "/Usuario/Entrar";
                 });

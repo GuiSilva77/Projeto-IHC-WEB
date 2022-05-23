@@ -1,63 +1,150 @@
-﻿@model Projeto_IHC.Entidades.Sessao
+﻿@model Projeto_IHC.Models.AdicionarSessaoModel
 
 @{
-    ViewData["Title"] = "AdicionarSessao";
+    ViewData["Title"] = "Adicionar Sessao";
 }
 
-<h1>AdicionarSessao</h1>
+@section Styles {
+<link rel="stylesheet" href="~/css/AdicionarSessao.css" />
+}
 
-<h4>Sessao</h4>
+<nav id="caminhodepao" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a href="/Admin/ListaSessoes">Lista Sessões</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Adicionar Sessão</li>
+    </ol>
+</nav>
+
+<h1>Adicionar Sessão</h1>
+
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="AdicionarSessao">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+                <label class="control-label">Filme</label>
+                <select asp-for="Sessao.FilmeId" class="form-control" id="inputGroupSelect01">
+                    <option selected>Selecione um Filme</option>
+                    @foreach (var item in Model.FilmesDisponiveis)
+                    {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                </select>
+                <span asp-validation-for="Sessao.FilmeId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FilmeId" class="control-label"></label>
-                <input asp-for="FilmeId" class="form-control" />
-                <span asp-validation-for="FilmeId" class="text-danger"></span>
+                <label>Horário</label>
+                <input asp-for="Sessao.Horario" class="form-control" type="time" />
+                <span asp-validation-for="Sessao.Horario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Horario" class="control-label"></label>
-                <input asp-for="Horario" class="form-control" />
-                <span asp-validation-for="Horario" class="text-danger"></span>
+                <label>Dias da Semana</label>
+                <input asp-for="Sessao.DiasSemana" type="hidden" id="diassemena" />
+                <div class="d-flex flex-row">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="1">
+                        <label class="form-check-label">DOM</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="1">
+                        <label class="form-check-label">SEG</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="1">
+                        <label class="form-check-label">TER</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="1">
+                        <label class="form-check-label">QUA</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="1">
+                        <label class="form-check-label">QUI</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="1">
+                        <label class="form-check-label">SEX</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="1">
+                        <label class="form-check-label">SAB</label>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="DiasSemana" class="control-label"></label>
-                <input asp-for="DiasSemana" class="form-control" />
-                <span asp-validation-for="DiasSemana" class="text-danger"></span>
+                <label>Sala</label>
+                <div class="form-check form-check-inline">
+                    <input asp-for="Sessao.Sala" class="form-check-input" type="radio" value="1">
+                    <label class="form-check-label">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="Sessao.Sala" class="form-check-input" type="radio" value="2">
+                    <label class="form-check-label">2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="Sessao.Sala" class="form-check-input" type="radio" value="3">
+                    <label class="form-check-label">3</label>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="Sala" class="control-label"></label>
-                <input asp-for="Sala" class="form-control" />
-                <span asp-validation-for="Sala" class="text-danger"></span>
+                <label>Áudio</label>
+                <div class="form-check form-check-inline">
+                    <input asp-for="Sessao.Audio" class="form-check-input" type="radio" value="Dublado">
+                    <label class="form-check-label">Dublado</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="Sessao.Audio" class="form-check-input" type="radio" value="Legendado">
+                    <label class="form-check-label">Legendado</label>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="Audio" class="control-label"></label>
-                <input asp-for="Audio" class="form-control" />
-                <span asp-validation-for="Audio" class="text-danger"></span>
+                <label>Vídeo</label>
+                <div class="form-check form-check-inline">
+                    <input asp-for="Sessao.Video" class="form-check-input" type="radio" value="2D">
+                    <label class="form-check-label">2D</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="Sessao.Video" class="form-check-input" type="radio" value="3D">
+                    <label class="form-check-label">3D</label>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Video" class="control-label"></label>
-                <input asp-for="Video" class="form-control" />
-                <span asp-validation-for="Video" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+
+            <button id="EnviarBtn" class="btn btn-primary">Criar Sessão</button>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    const EnviarBtn = document.getElementById('EnviarBtn');
+    // selecionar todas as checkboxes
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+
+
+    EnviarBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        // criar um array com os valores dos checkboxes
+        const checkboxesValues = Array.from(checkboxes).map(checkbox => checkbox.checked);
+
+        let DiasSemana = "";
+        checkboxesValues.map((value, index) => {
+            if (value) {
+                DiasSemana += "1"
+            }
+            else {
+                DiasSemana += "0"
+            }
+        });
+
+        document.getElementById('diassemena').value = DiasSemana;
+        document.querySelector('form').submit();
+    });
+
+</script>
 }

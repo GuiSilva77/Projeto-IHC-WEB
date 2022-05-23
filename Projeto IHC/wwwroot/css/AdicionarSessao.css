@@ -1,13 +1,25 @@
-﻿input {
+select,
+input[type="checkbox"],
+input[type="radio"],
+option,
+input {
   border: 1px solid rgba(158, 162, 166, 0.418);
   background-color: rgb(20, 24, 28) !important;
 }
 
+select:hover,
+input[type="checkbox"]:hover,
+input[type="radio"]:hover,
+option:hover,
 input:hover {
-  border: 1px solid rgba(158, 162, 166, 0.418);
+  border: 1px solid hsla(210, 4%, 80%, 0.418);
   background-color: rgb(20, 24, 28) !important;
 }
 
+select:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus,
+option:focus,
 input:focus {
   box-shadow: none !important;
 }
@@ -28,4 +40,12 @@ button:hover,
 button:focus {
   border-color: var(--color-secondary);
   box-shadow: none;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+#caminhodepao {
+  padding: 0 !important;
 }

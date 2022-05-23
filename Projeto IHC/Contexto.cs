@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Projeto_IHC
 {
-    public class Contexto: DbContext
+    public class Contexto : DbContext
     {
-        public Contexto(DbContextOptions<Contexto> opt): base(opt)
+        public Contexto(DbContextOptions<Contexto> opt) : base(opt)
         { }
 
         public DbSet<Entidades.Filme> FILMES { get; set; }

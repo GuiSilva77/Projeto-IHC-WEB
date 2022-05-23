@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Projeto_IHC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,9 @@ namespace Projeto_IHC.Controllers
     [Authorize(AuthenticationSchemes = "CookieAuthentication")]
     public class AdminController : Controller
     {
-        public readonly IHttpClientFactory HttpClientFactory;
         public readonly Contexto db;
-        public AdminController(IHttpClientFactory _httpClientFactory, Contexto _db)
+        public AdminController(Contexto _db)
         {
-            HttpClientFactory = _httpClientFactory;
             db = _db;
         }
 
@@ -31,7 +30,13 @@ namespace Projeto_IHC.Controllers
 
         public IActionResult ListaSessoes()
         {
-            return View(db.SESSOES.ToList());
+            var sessoes = new List<Entidades.Sessao>(db.SESSOES.ToList());
+
+            foreach (var sessao in sessoes)
+            {
+                sessao.Filme = db.FILMES.FirstOrDefault(f => f.Id == sessao.FilmeId);
+            }
+            return View(sessoes);
         }
 
         public IActionResult AdicionarFilme()
@@ -53,7 +58,7 @@ namespace Projeto_IHC.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditarFilme(int id, Entidades.Filme DadosTela)
+        public IActionResult EditarFilme(Entidades.Filme DadosTela)
         {
             db.FILMES.Update(DadosTela);
             db.SaveChanges();
@@ -70,26 +75,46 @@ namespace Projeto_IHC.Controllers
 
         public IActionResult AdicionarSessao()
         {
-            return View();
+            AdicionarSessaoModel model = new()
+            {
+                FilmesDisponiveis = db.FILMES.ToList()
+            };
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult AdicionarSessao(Entidades.Sessao DadosTela)
+        public IActionResult AdicionarSessao(AdicionarSessaoModel DadosTela)
         {
-            db.SESSOES.Add(DadosTela);
+            var FilmeSelecionado = db.FILMES.Where(f => f.Id == DadosTela.Sessao.FilmeId).FirstOrDefault();
+
+            if (FilmeSelecionado.emBreve == true)
+            {
+                FilmeSelecionado.emBreve = false;
+                FilmeSelecionado.emCartaz = true;
+                db.FILMES.Update(FilmeSelecionado);
+            }
+
+
+
+            db.SESSOES.Add(DadosTela.Sessao);
             db.SaveChanges();
-            return RedirectToAction("ListaSessao");
+            return RedirectToAction("ListaSessoes");
         }
 
-        public IActionResult EditarSessao(int id)
+        public ActionResult EditarSessao(int id)
         {
-            return View(db.SESSOES.Where(a=> a.Id == id).FirstOrDefault());
+            AdicionarSessaoModel model = new()
+            {
+                FilmesDisponiveis = db.FILMES.ToList(),
+                Sessao = db.SESSOES.Where(a => a.Id == id).FirstOrDefault()
+            };
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult EditarSessao(int id, Entidades.Sessao DadosTela)
+        public ActionResult EditarSessao(AdicionarSessaoModel DadosTela)
         {
-            db.SESSOES.Update(DadosTela);
+            db.SESSOES.Update(DadosTela.Sessao);
             db.SaveChanges();
             return RedirectToAction("ListaSessoes");
         }
@@ -99,18 +124,8 @@ namespace Projeto_IHC.Controllers
             db.SESSOES.Remove(
                 db.SESSOES.Where(a => a.Id == id).FirstOrDefault()
                 );
+            db.SaveChanges();
             return RedirectToAction("ListaSessoes");
         }
-
-        public async Task<string> GetJSON()
-        {
-            var URL = "https://api.themoviedb.org/3/movie/550?api_key=2e06b12031eb2557fa256ed1f6fd5651&language=pt-BR";
-            var httpclient = HttpClientFactory.CreateClient();
-
-            var response = await httpclient.GetAsync(URL);
-            var json = await response.Content.ReadAsStringAsync();
-            return json;
-        }
-
     }
 }

@@ -20,16 +20,20 @@ namespace Projeto_IHC.Controllers
         }
         public IActionResult Index()
         {
-            HomeModel HM = new HomeModel();
-            HM.FilmeDestaque = db.FILMES.Where(a => a.emCartaz == true).FirstOrDefault();
-            HM.filmesEmBreve = db.FILMES.Where(a => a.emBreve == true).ToList();
+            HomeModel HM = new()
+            {
+                FilmeDestaque = db.FILMES.Where(a => a.emCartaz == true).FirstOrDefault(),
+                filmesEmBreve = db.FILMES.Where(a => a.emBreve == true).ToList()
+            };
             return View(HM);
         }
 
         public IActionResult Programacao()
         {
-            ProgramacaoModel PM = new ProgramacaoModel();
-            PM.Sessoes = db.SESSOES.ToList();
+            ProgramacaoModel PM = new()
+            {
+                Sessoes = db.SESSOES.ToList()
+            };
             foreach (var item in PM.Sessoes)
                 item.Filme = db.FILMES.Where(a => a.Id == item.FilmeId).FirstOrDefault();
 
@@ -41,22 +45,6 @@ namespace Projeto_IHC.Controllers
             return View();
         }
 
-        public IActionResult AddSessao()
-        {
-            Sessao sessao = new Sessao();
 
-            sessao.Filme = db.FILMES.Where(a => a.emCartaz == true).FirstOrDefault();
-            sessao.FilmeId = sessao.Filme.Id;
-            sessao.Horario = "18:30";
-            sessao.DiasSemana = "1111111";
-            sessao.Sala = 1;
-            sessao.Audio = "Dublado";
-            sessao.Video = "2D";
-
-            db.SESSOES.Add(sessao);
-            db.SaveChanges();
-
-            return RedirectToAction("Programacao");
-        }
     }
 }

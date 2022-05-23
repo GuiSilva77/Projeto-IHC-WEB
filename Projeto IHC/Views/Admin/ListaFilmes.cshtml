@@ -4,10 +4,19 @@
     ViewData["Title"] = "Lista de Filmes";
 }
 
+
+<nav id="caminhodepao" style="--bs-breadcrumb-divider: '>'; padding:0!important;" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Admin/">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Lista Filmes</li>
+    </ol>
+</nav>
+
 <h1>Lista de Filmes</h1>
 
+
 <p>
-    <a href="/Admin/AdicionarFilme">Adicionar Filme</a>
+    <a class="btn btn-outline-success" href="/Admin/AdicionarFilme">Adicionar Filme</a>
 </p>
 <table class="table table-dark table-hover">
     <thead>
@@ -34,45 +43,46 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @if (item.emCartaz)
-                {
-                    <div class="mx-2"><i class="fa-solid fa-check"></i></div>
-                }
-                else
-                {
-                    <div class="mx-2"><i class="fa-solid fa-x"></i></div>
-                }
-            </td>
-            <td>
-                @if (item.emBreve)
-                {
-                    <div class="mx-2"><i class="fa-solid fa-check"></i></div>
-                }
-                else
-                {
-                    <div class="mx-2"><i class="fa-solid fa-x"></i></div>
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Classificacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duracao)
-            </td>
-            <td>
-                <a class="btn btn-outline-primary" href="/Admin/EditarFilme/@item.Id">Editar</a>
-                <a class="btn btn-outline-danger" href="/Admin/RemoverFilme/@item.Id">Remover</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @if (item.emCartaz)
+                    {
+                        <div class="mx-2"><i class="fa-solid fa-check"></i></div>
+                    }
+                    else
+                    {
+                        <div class="mx-2"><i class="fa-solid fa-x"></i></div>
+                    }
+                </td>
+                <td>
+                    @if (item.emBreve)
+                    {
+                        <div class="mx-2"><i class="fa-solid fa-check"></i></div>
+                    }
+                    else
+                    {
+                        <div class="mx-2"><i class="fa-solid fa-x"></i></div>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classificacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duracao)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" href="/Admin/EditarFilme/@item.Id">Editar</a>
+                    <a class="btn btn-outline-danger" href="/Admin/RemoverFilme/@item.Id">Remover</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

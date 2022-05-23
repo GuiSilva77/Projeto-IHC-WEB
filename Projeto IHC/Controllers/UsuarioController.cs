@@ -43,7 +43,7 @@ namespace Projeto_IHC.Controllers
 
             Entidades.Usuario UsuarioLogado = db.USUARIOS.Where(a =>
             a.Email == login && a.Senha == senha).FirstOrDefault();
-            
+
             if (UsuarioLogado == null)
             {
                 TempData["Error"] = "Usuário e/ou Senha Inválidos.";
