@@ -8,9 +8,16 @@
 <link rel="stylesheet" href="/css/AdicionarFilme.css" />
 }
 
+<nav id="caminhodepao" style="--bs-breadcrumb-divider: '>';padding:0!important;" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a href="/Admin/ListaFilmes">Lista Filmes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Adicionar Filme</li>
+    </ol>
+</nav>
+
 <h1>Adicionar Filme</h1>
 
-<h4>Filme</h4>
 <hr />
 <div class="row">
     <div class="col-md-8">
@@ -22,7 +29,12 @@
                     <input asp-for="Nome" type="text" id="Nome" class="form-control" required />
                 </div>
                 <button type="button" class="btn btn-primary w-100 mt-4" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" id="nomeBtn">Pesquisar</button>
+                        data-bs-target="#exampleModal" id="nomeBtn">
+                    Pesquisar
+                </button>
+                <button type="button" class="btn btn-primary w-100 mt-4" id="limparBtn">
+                    Limpar Campos
+                </button>
             </div>
             <div id="modal">
                 <!-- Modal -->
@@ -98,11 +110,10 @@
                 <label>Resumo</label>
                 <textarea asp-for="Resumo" class="form-control" id="res" required></textarea>
             </div>
+
+            <input type="submit" class="btn btn-primary"/>
         </form>
     </div>
-</div>
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
@@ -113,6 +124,7 @@
     const botao = document.getElementById("nomeBtn");
     const tabela = document.getElementById("table");
     const form = document.getElementById("form");
+    limparBTN = document.getElementById("limparBtn");
 
     const TMDB_API_KEY = "2e06b12031eb2557fa256ed1f6fd5651";
     const TMDB_API_URL = "https://api.themoviedb.org/3/";
@@ -174,7 +186,7 @@
                 document.getElementById("Nome").value = filme.title;
                 document.getElementById("urlp").value = `${TMDB_API_IMG}w500${filme.poster_path}`;
                 document.getElementById("urlc").value = `${TMDB_API_IMG}original${filme.backdrop_path}`;
-                document.getElementById("urlt").value = filme.videos.results[0].key;
+                document.getElementById("urlt").value = `https://www.youtube.com/embed/${filme.videos.results[0].key}`;
                 document.getElementById("dir").value = filme.director;
                 document.getElementById("ano").value = filme.release_date.substring(0, 4);
                 document.getElementById("dur").value = filme.runtime;
@@ -185,33 +197,16 @@
             });
     };
 
-    const inserirTrailer = (videoKey) => {
-        tabela.innerHTML += `<div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Trailer</h5>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoKey}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>`;
-    };
-
-    const adicionarLinkTrailer = () => {
-        //create a modal to the user to enter the link of the trailer
-        tabela.innerHTML += `<div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Adicionar Trailer</h5>
-      <form id="formTrailer">
-        <div class="form-group">
-          <label for="trailer">Link do Trailer</label>
-          <input type="text" class="form-control" id="trailer" placeholder="Link do Trailer">
-        </div>
-        <button type="submit" class="btn btn-primary">Adicionar</button>
-      </form>
-    </div>
-  </div>`;
-
-        const formTrailer = document.getElementById("formTrailer");
-        formTrailer.addEventListener("submit", async (e) => { });
-    };
+    limparBTN.addEventListener("click", () => {
+        document.getElementById("Nome").value = "";
+        document.getElementById("urlp").value = "";
+        document.getElementById("urlc").value = "";
+        document.getElementById("urlt").value = "";
+        document.getElementById("dir").value =  "";
+        document.getElementById("ano").value =  "";
+        document.getElementById("dur").value =  "";
+        document.getElementById("res").value = "";
+    })
 
 </script>
 }
