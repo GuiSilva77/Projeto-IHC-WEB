@@ -16,88 +16,92 @@
 <p>
     <a class="btn btn-outline-success" href="/Admin/AdicionarSessao">Adicionar Sessão</a>
 </p>
-<table class="table  table-dark table-hover text-center">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                Filme
-            </th>
-            <th>
-                Horário
-            </th>
-            <th>
-                <div class="d-flex flex-column">
-                    <div class="d-flex justify-content-center">
-                        <p class="m-0 p-0">Sessões na Semana</p>
-                    </div>
-                    <div class="d-flex flex-row justify-content-around">
-                        <div class="mx-0">DOM</div>
-                        <div class="mx-0">SEG</div>
-                        <div class="mx-0">TER</div>
-                        <div class="mx-0">QUA</div>
-                        <div class="mx-0">QUI</div>
-                        <div class="mx-0">SEX</div>
-                        <div class="mx-0">SAB</div>
-                    </div>
-                </div>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sala)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Audio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Video)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="overflow-auto">
+    <table class="table  table-dark table-hover text-center overflow-auto">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @item.Filme.Nome
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Horario)
-                </td>
-                <td>
-                    <div class="d-flex flex-row justify-content-around flex-grow-1">
-                        @foreach (var dia in item.DiasSemana)
-                        {
-                            if (dia == '1')
-                            {
-                                <div class="mx-0"><i class="fa-solid fa-check"></i></div>
-                            }
-                            else
-                            {
-                                <div class="mx-0"><i class="fa-solid fa-x"></i></div>
-                            }
-                        }
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    Filme
+                </th>
+                <th>
+                    Horário
+                </th>
+                <th>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-center">
+                            <p class="m-0 p-0">Sessões na Semana</p>
+                        </div>
+                        <div class="d-flex flex-row justify-content-around">
+                            <div class="mx-0">DOM</div>
+                            <div class="mx-0">SEG</div>
+                            <div class="mx-0">TER</div>
+                            <div class="mx-0">QUA</div>
+                            <div class="mx-0">QUI</div>
+                            <div class="mx-0">SEX</div>
+                            <div class="mx-0">SAB</div>
+                        </div>
                     </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sala)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Audio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Video)
-                </td>
-                <td>
-                    <a class="btn btn-outline-primary" href="/Admin/EditarSessao/@item.Id">Editar</a>
-                    <a class="btn btn-outline-danger" href="/Admin/RemoverSessao/@item.Id">Remover</a>
-                </td>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sala)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Audio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Video)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @item.Filme.Nome
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Horario)
+                    </td>
+                    <td>
+                        <div class="d-flex flex-row justify-content-around flex-grow-1">
+                            @foreach (var dia in item.DiasSemana)
+                            {
+                                if (dia == '1')
+                                {
+                                    <div class="mx-0"><i class="fa-solid fa-check"></i></div>
+                                }
+                                else
+                                {
+                                    <div class="mx-0"><i class="fa-solid fa-x"></i></div>
+                                }
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sala)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Audio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Video)
+                    </td>
+                    <td>
+                        <div class="d-flex flex-md-row flex-column">
+                            <a class="btn btn-outline-primary m-1" href="/Admin/EditarSessao/@item.Id">Editar</a>
+                            <a class="btn btn-outline-danger m-1" href="/Admin/RemoverSessao/@item.Id">Remover</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

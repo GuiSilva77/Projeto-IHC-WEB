@@ -90,5 +90,46 @@ namespace Projeto_IHC.Controllers
             return Redirect(ViewData["ReturnUrl"].ToString());
         }
 
+        public IActionResult Redefinir()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Redefinir(string chave)
+        {
+            var chaveMestra = "123456789";
+            if (chave == null || chave != chaveMestra)
+            {
+                TempData["Error"] = "Chave Inválida.";
+                return View();
+            }
+
+            return RedirectToAction("RedefinirSenha");
+        }
+
+        public IActionResult RedefinirSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult RedefinirSenha(string usuario, string senha)
+        {
+            if (string.IsNullOrEmpty(senha))
+            {
+                TempData["Error"] = "O(s) Campo(s) não pode(m) estar vazio(s).";
+                return View();
+            }
+
+            Entidades.Usuario UsuarioLogado = db.USUARIOS.Where(a => a.Email == usuario).FirstOrDefault();
+            UsuarioLogado.Senha = senha;
+
+            db.USUARIOS.Update(UsuarioLogado);
+            db.SaveChanges();
+
+            TempData["Success"] = "Senha Redefinida com Sucesso.";
+            return RedirectToAction("Entrar");
+        }
     }
 }

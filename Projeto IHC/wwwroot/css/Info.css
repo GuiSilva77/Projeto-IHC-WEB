@@ -1,0 +1,21 @@
+div.carousel-item > img {
+  height: 30rem;
+  width: auto;
+  aspect-ratio: 16/9;
+}
+* {
+  color: white !important;
+}
+section {
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 3rem;
+}
+p {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+h2 {
+  padding-left: 10%;
+  padding-right: 10%;
+}

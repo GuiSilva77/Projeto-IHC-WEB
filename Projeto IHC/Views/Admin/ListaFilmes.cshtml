@@ -18,71 +18,75 @@
 <p>
     <a class="btn btn-outline-success" href="/Admin/AdicionarFilme">Adicionar Filme</a>
 </p>
-<table class="table table-dark table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                Em Cartaz
-            </th>
-            <th>
-                Em Breve
-            </th>
-            <th>
-                Classificação
-            </th>
-            <th>
-                Duração
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="overflow-auto">
+    <table class="table table-dark table-hover">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @if (item.emCartaz)
-                    {
-                        <div class="mx-2"><i class="fa-solid fa-check"></i></div>
-                    }
-                    else
-                    {
-                        <div class="mx-2"><i class="fa-solid fa-x"></i></div>
-                    }
-                </td>
-                <td>
-                    @if (item.emBreve)
-                    {
-                        <div class="mx-2"><i class="fa-solid fa-check"></i></div>
-                    }
-                    else
-                    {
-                        <div class="mx-2"><i class="fa-solid fa-x"></i></div>
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Classificacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Duracao)
-                </td>
-                <td>
-                    <a class="btn btn-outline-primary" href="/Admin/EditarFilme/@item.Id">Editar</a>
-                    <a class="btn btn-outline-danger" href="/Admin/RemoverFilme/@item.Id">Remover</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    Em Cartaz
+                </th>
+                <th>
+                    Em Breve
+                </th>
+                <th>
+                    Classificação
+                </th>
+                <th>
+                    Duração
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @if (item.emCartaz)
+                        {
+                            <div class="mx-2"><i class="fa-solid fa-check"></i></div>
+                        }
+                        else
+                        {
+                            <div class="mx-2"><i class="fa-solid fa-x"></i></div>
+                        }
+                    </td>
+                    <td>
+                        @if (item.emBreve)
+                        {
+                            <div class="mx-2"><i class="fa-solid fa-check"></i></div>
+                        }
+                        else
+                        {
+                            <div class="mx-2"><i class="fa-solid fa-x"></i></div>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Classificacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duracao)
+                    </td>
+                    <td>
+                        <div class="d-flex flex-md-row flex-column">
+                            <a class="btn btn-outline-primary m-1" href="/Admin/EditarFilme/@item.Id">Editar</a>
+                            <a class="btn btn-outline-danger m-1" href="/Admin/RemoverFilme/@item.Id">Remover</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

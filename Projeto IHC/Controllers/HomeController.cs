@@ -46,8 +46,11 @@ namespace Projeto_IHC.Controllers
             return View(PM);
         }
 
-        public IActionResult SobreNos()
+        public IActionResult Info()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             return View();
         }
 

@@ -64,24 +64,29 @@
                 <div class="form-group w-100 m-2 mb-2">
                     <label>URL do Poster</label>
                     <input asp-for="URLPoster" type="url" class="form-control" id="urlp" required />
+                    <span class="text-danger" asp-validation-for="URLPoster"></span>
                 </div>
                 <div class="form-group w-100 m-2 mb-2">
                     <label>URL da Capa</label>
                     <input asp-for="URLCapa" type="url" class="form-control" id="urlc" required />
+                    <span asp-validation-for="URLCapa"></span>
                 </div>
             </div>
             <div class="form-group w-auto m-2 mb-2">
                 <label>URL do Trailer</label>
                 <input asp-for="URLTrailer" type="url" class="form-control" id="urlt" required />
+                <span class="text-danger" asp-validation-for="URLTrailer"></span>
             </div>
             <div class="d-flex flex-sm-row flex-column">
                 <div class="form-group w-100 m-2 mb-2">
                     <label>Diretor</label>
                     <input asp-for="Diretor" type="text" class="form-control" id="dir" required />
+                    <span class="text-danger" asp-validation-for="Diretor"></span>
                 </div>
                 <div class="form-group w-100 m-2 mb-2">
                     <label>Ano</label>
                     <input asp-for="Ano" type="number" class="form-control" id="ano" required />
+                    <span asp-validation-for="Ano" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group w-100 m-2 mb-2">
@@ -89,30 +94,35 @@
                 <div class="form-check form-check-inline">
                     <input asp-for="emBreve" class="form-check-input">
                     <label class="form-check-label">Em Breve</label>
+                    <span class="text-danger" asp-validation-for="emBreve"></span>
                 </div>
                 <div class="form-check form-check-inline">
                     <input asp-for="emCartaz" class="form-check-input">
                     <label class="form-check-label">Em Cartaz</label>
+                    <span class="text-danger" asp-validation-for="emCartaz"></span>
                 </div>
             </div>
             <div class="d-flex flex-sm-row flex-column">
                 <div class="form-group w-100 m-2 mb-2">
                     <label>Classificação</label>
                     <input asp-for="Classificacao" type="text" class="form-control" required />
+                    <span asp-validation-for="Classificacao" class="text-danger"></span>
                 </div>
 
                 <div class="form-group w-100 m-2 mb-2">
                     <label>Duração</label>
                     <input asp-for="Duracao" type="text" class="form-control" id="dur" required />
+                    <span asp-validation-for="Duracao" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group w-auto m-2 mb-2">
                 <label>Resumo</label>
                 <textarea asp-for="Resumo" class="form-control" id="res" required></textarea>
+                <span asp-validation-for="Resumo" class="text-danger"></span>
             </div>
 
             <input asp-for="Id" type="hidden">
-            <input type="submit" class="btn btn-primary" />
+            <input type="submit" class="btn btn-primary mb-5" />
         </form>
     </div>
 </div>
