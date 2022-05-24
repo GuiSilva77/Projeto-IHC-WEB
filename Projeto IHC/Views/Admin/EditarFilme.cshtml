@@ -4,85 +4,210 @@
     ViewData["Title"] = "Editar Filme";
 }
 
+@section Styles {
+<link rel="stylesheet" href="/css/AdicionarFilme.css" />
+}
+
+<nav id="caminhodepao" style="--bs-breadcrumb-divider: '>';padding:0!important;" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a href="/Admin/ListaFilmes">Lista Filmes</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Editar Filme</li>
+    </ol>
+</nav>
+
 <h1>Editar Filme</h1>
 
-<h4>Filme</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form asp-action="EditarFilme">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+            <div class="d-flex flex-sm-row flex-column w-75">
+                <div class="form-group w-100 m-2 mb-2">
+                    <label asp-for="Nome"></label>
+                    <input asp-for="Nome" type="text" id="Nome" class="form-control" required />
+                </div>
+                <button type="button" class="btn btn-primary w-100 mt-4" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" id="nomeBtn">
+                    Pesquisar
+                </button>
+                <button type="button" class="btn btn-primary w-100 mt-4" id="limparBtn">
+                    Limpar Campos
+                </button>
             </div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+            <div id="modal">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Selecionar Filme</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-hover table-dark" id="table">
+
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="URLPoster" class="control-label"></label>
-                <input asp-for="URLPoster" class="form-control" />
-                <span asp-validation-for="URLPoster" class="text-danger"></span>
+
+            <div class="d-flex flex-sm-row flex-column">
+                <div class="form-group w-100 m-2 mb-2">
+                    <label>URL do Poster</label>
+                    <input asp-for="URLPoster" type="url" class="form-control" id="urlp" required />
+                </div>
+                <div class="form-group w-100 m-2 mb-2">
+                    <label>URL da Capa</label>
+                    <input asp-for="URLCapa" type="url" class="form-control" id="urlc" required />
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="URLCapa" class="control-label"></label>
-                <input asp-for="URLCapa" class="form-control" />
-                <span asp-validation-for="URLCapa" class="text-danger"></span>
+            <div class="form-group w-auto m-2 mb-2">
+                <label>URL do Trailer</label>
+                <input asp-for="URLTrailer" type="url" class="form-control" id="urlt" required />
             </div>
-            <div class="form-group">
-                <label asp-for="URLTrailer" class="control-label"></label>
-                <input asp-for="URLTrailer" class="form-control" />
-                <span asp-validation-for="URLTrailer" class="text-danger"></span>
+            <div class="d-flex flex-sm-row flex-column">
+                <div class="form-group w-100 m-2 mb-2">
+                    <label>Diretor</label>
+                    <input asp-for="Diretor" type="text" class="form-control" id="dir" required />
+                </div>
+                <div class="form-group w-100 m-2 mb-2">
+                    <label>Ano</label>
+                    <input asp-for="Ano" type="number" class="form-control" id="ano" required />
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Diretor" class="control-label"></label>
-                <input asp-for="Diretor" class="form-control" />
-                <span asp-validation-for="Diretor" class="text-danger"></span>
+            <div class="form-group w-100 m-2 mb-2">
+                <label>Opções</label>
+                <div class="form-check form-check-inline">
+                    <input asp-for="emBreve" class="form-check-input">
+                    <label class="form-check-label">Em Breve</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="emCartaz" class="form-check-input">
+                    <label class="form-check-label">Em Cartaz</label>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Ano" class="control-label"></label>
-                <input asp-for="Ano" class="form-control" />
-                <span asp-validation-for="Ano" class="text-danger"></span>
+            <div class="d-flex flex-sm-row flex-column">
+                <div class="form-group w-100 m-2 mb-2">
+                    <label>Classificação</label>
+                    <input asp-for="Classificacao" type="text" class="form-control" required />
+                </div>
+
+                <div class="form-group w-100 m-2 mb-2">
+                    <label>Duração</label>
+                    <input asp-for="Duracao" type="text" class="form-control" id="dur" required />
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Resumo" class="control-label"></label>
-                <input asp-for="Resumo" class="form-control" />
-                <span asp-validation-for="Resumo" class="text-danger"></span>
+            <div class="form-group w-auto m-2 mb-2">
+                <label>Resumo</label>
+                <textarea asp-for="Resumo" class="form-control" id="res" required></textarea>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="emCartaz" /> @Html.DisplayNameFor(model => model.emCartaz)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="emBreve" /> @Html.DisplayNameFor(model => model.emBreve)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Classificacao" class="control-label"></label>
-                <input asp-for="Classificacao" class="form-control" />
-                <span asp-validation-for="Classificacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duracao" class="control-label"></label>
-                <input asp-for="Duracao" class="form-control" />
-                <span asp-validation-for="Duracao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
+            <input asp-for="Id" type="hidden">
+            <input type="submit" class="btn btn-primary" />
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    const nome = document.getElementById("Nome");
+    const botao = document.getElementById("nomeBtn");
+    const tabela = document.getElementById("table");
+    const form = document.getElementById("form");
+    limparBTN = document.getElementById("limparBtn");
+
+    const TMDB_API_KEY = "2e06b12031eb2557fa256ed1f6fd5651";
+    const TMDB_API_URL = "https://api.themoviedb.org/3/";
+    const TMDB_API_IMG = "https://image.tmdb.org/t/p/";
+
+    let results = {};
+
+    botao.addEventListener("click", async () => {
+        await fetch(
+            `${TMDB_API_URL}search/movie?api_key=${TMDB_API_KEY}&query=${nome.value}&language=pt-br`,
+            {
+                method: "GET",
+            }
+        )
+            .then(async (response) => {
+                results = await response.json();
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        if (results.results.length > 0) {
+            tabela.innerHTML = `<table class="table table-striped table-hover">
+        <thead>
+          <th></th>
+          <th>Nome</th>
+          <th>Ano</th>
+          <th></th>
+        </thead>
+        <tbody id="conteudo">
+        </tbody>
+      </table>`;
+
+            const conteudo = document.getElementById("conteudo");
+            console.log(results.results);
+
+            results.results.map((element) => {
+                conteudo.innerHTML += `<tr>
+        <td><img src="${TMDB_API_IMG}w500${element.poster_path}" alt="" width="200px" height="300px"></td>
+        <td>${element.title}</td>
+        <td>${element.release_date}</td>
+        <td>
+          <button class="btn btn-primary" onclick="selecionarFilme(${element.id})" data-bs-dismiss="modal">Selecionar Filme</button>
+        </td>
+      </tr>`;
+            });
+        }
+    });
+
+    const selecionarFilme = (id) => {
+        debugger;
+        fetch(
+            `${TMDB_API_URL}movie/${id}?api_key=${TMDB_API_KEY}&language=pt-br&append_to_response=videos`
+        )
+            .then(async (response) => {
+                const filme = await response.json();
+                console.log(filme);
+
+                document.getElementById("Nome").value = filme.title;
+                document.getElementById("urlp").value = `${TMDB_API_IMG}w500${filme.poster_path}`;
+                document.getElementById("urlc").value = `${TMDB_API_IMG}original${filme.backdrop_path}`;
+                document.getElementById("urlt").value = `https://www.youtube.com/embed/${filme.videos.results[0].key}`;
+                document.getElementById("dir").value = filme.director;
+                document.getElementById("ano").value = filme.release_date.substring(0, 4);
+                document.getElementById("dur").value = filme.runtime;
+                document.getElementById("res").value = filme.overview;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
+    limparBTN.addEventListener("click", () => {
+        document.getElementById("Nome").value = "";
+        document.getElementById("urlp").value = "";
+        document.getElementById("urlc").value = "";
+        document.getElementById("urlt").value = "";
+        document.getElementById("dir").value = "";
+        document.getElementById("ano").value = "";
+        document.getElementById("dur").value = "";
+        document.getElementById("res").value = "";
+    })
+
+</script>
 }

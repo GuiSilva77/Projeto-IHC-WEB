@@ -1,11 +1,21 @@
 ﻿@section Styles {
-    <link rel="stylesheet" href="~/css/Filme.css" />
-} 
+<link rel="stylesheet" href="~/css/Filme.css" />
+}
 
 @model Projeto_IHC.Models.FilmeModel
 
 
-<section class="card d-flex flex-md-row flex-column justify-content-center align-items-center bg-dark">
+<section class="mt-3">
+    <nav class="mx-3" id="caminhodepao" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home/">Página Inicial</a></li>
+            <li class="breadcrumb-item"><a href="/Home/Programacao">Programação</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Filme.Nome</li>
+        </ol>
+    </nav>
+</section>
+
+<section class="card m-3 d-flex flex-md-row flex-column justify-content-center align-items-center bg-dark">
     <div><img class="poster" src="@Model.Filme.URLPoster" alt="" id="cardPoster"></div>
     <div class="container-fluid">
         <div>
@@ -16,18 +26,13 @@
         <p class="text-start pr-md-5 m-md-0">@Model.Filme.Resumo</p>
     </div>
 </section>
-<section>
-    <div class="d-flex flex-lg-row flex-column">
-        <div class="container-xlg m-3 col-lg-7">
-            <p class="h2 text-white">Trailer</p>
-            <iframe src="@Model.Filme.URLTrailer"
-                    title="@Model.Filme.Nome Trailer"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
-                    allowfullscreen
-                    class="yt-frame">
+<section class="h-auto mt-3">
+    <div class="d-flex flex-column flex-grow-1">
+        <p class="h2 text-white">Trailer</p>
+        <iframe src="@Model.Filme.URLTrailer" title="@Model.Filme.Nome Trailer" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" allowfullscreen
+            class="yt-frame">
 
-            </iframe>
-        </div>
+        </iframe>
     </div>
 </section>

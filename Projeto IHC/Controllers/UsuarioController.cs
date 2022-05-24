@@ -64,9 +64,14 @@ namespace Projeto_IHC.Controllers
             db.USUARIOS.Update(UsuarioLogado);
             db.SaveChanges();
 
-            ViewBag.UserName = UsuarioLogado.Nome;
+            ViewData["admin"] = UsuarioLogado.Nome;
 
-            return Redirect("/Admin/");
+            //get return url from query string
+            string returnUrl = HttpContext.Request.Query["returnUrl"];
+            if (string.IsNullOrEmpty(returnUrl))
+                return RedirectToAction("Index", "Admin");
+            else
+                return Redirect(returnUrl);
         }
 
         public async Task<IActionResult> Sair()
@@ -78,11 +83,11 @@ namespace Projeto_IHC.Controllers
             db.USUARIOS.Update(UsuarioLogado);
             db.SaveChanges();
 
-            ViewBag.Username = null;
+            ViewData["admin"] = null;
 
             await HttpContext.SignOutAsync("CookieAuthentication");
             ViewData["ReturnUrl"] = "/";
-            return Redirect("/Usuario/Entrar");
+            return Redirect(ViewData["ReturnUrl"].ToString());
         }
 
     }

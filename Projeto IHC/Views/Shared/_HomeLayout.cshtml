@@ -1,33 +1,27 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="icon" href="~/img/capital.svg" />
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css"  asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/style/config.css"  asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/style/nav.css"  asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/style/footer.css"  asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style/config.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style/nav.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style/footer.css" asp-append-version="true" />
     @RenderSection("Styles", false)
 </head>
-<body class="bg-dark position-relative"
-    data-bs-spy="scroll"
-    data-bs-target="navbar"
-    data-bs-offset="0"
-    tabindex="0">
+
+<body class="bg-dark position-relative" data-bs-spy="scroll" data-bs-target="navbar" data-bs-offset="0" tabindex="0">
     <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
         <div class="container-fluid">
             <a class="navbar-brand txt" href="/Home/">
                 <img src="~/img/logo.svg" alt="logo" class="logo" />
             </a>
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,18 +30,29 @@
                         <a class="nav-link active" aria-current="page" href="/home/programacao">Programação</a>
                     </li>
                     <li class="nav-item nav-btn mx-2">
-                        <a class="nav-link active"
-                           aria-current="page"
-                           href="/home/#emcartaz">Em breve</a>
+                        <a class="nav-link active" aria-current="page" href="/home/#embreve">Em breve</a>
                     </li>
                     <li class="nav-item nav-btn mx-2">
-                        <a class="nav-link active"
-                           aria-current="page"
-                           href="/home/info">Sobre Nós</a>
+                        <a class="nav-link active" aria-current="page" href="/home/info">Sobre Nós</a>
                     </li>
                 </ul>
 
-                
+                @if (ViewData["admin"] != null)
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown  nav-btn">
+                            <a class="nav-link dropdown-toggle nav-btn" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span>@ViewData["admin"].ToString()</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Admin/">Administração</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/usuario/sair/">Sair</a>
+                            </div>
+                        </li>
+                    </ul>
+                }
             </div>
         </div>
     </nav>
@@ -99,4 +104,5 @@
     <script src="https://kit.fontawesome.com/0edd786e2e.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

@@ -25,6 +25,10 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Admin"
+                                asp-action="PaginaInicial">Página Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Admin"
                                 asp-action="ListaSessoes">Sessões</a>
                         </li>
                         <li class="nav-item">
@@ -37,7 +41,9 @@
                         </li>
                     </ul>
                     <div class="d-flex flex-row">
-                        <p class="text-white">@ViewData["UserName"]</p>
+                        <div class="d-flex align-items-center">
+                            <p class="text-white m-0">@ViewData["admin"]</p>
+                        </div>
                         <a class="nav-link text-white" href="/usuario/sair">Sair <i
                                 class="fa-solid fa-arrow-right-from-bracket"></i></a>
                     </div>
@@ -45,15 +51,13 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main style="padding-left: 10%;padding-right: 10%;">
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Login - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            Cinelplex © 2022 - Todos os direitos reservados.
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -1,30 +1,40 @@
-﻿
-body {
-    scroll-behavior: smooth;
-    font-family: var(--bs-body-font-family);
-    --bs-text-opacity: 1;
-    color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+﻿body {
+  scroll-behavior: smooth;
+  font-family: var(--bs-body-font-family);
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
 }
 
 .poster {
-    width: 15em;
-    height: 100%;
-    aspect-ratio: 2/3;
+  width: 15em;
+  height: 100%;
+  aspect-ratio: 2/3;
 }
 
 .card-title {
-    font-size: 4rem;
-    font-weight: bold;
-    color: whitesmoke;
+  font-size: 4rem;
+  font-weight: bold;
+  color: whitesmoke;
 }
 
-@media (min-width:768px) {
-    .pr-md-5 {
-        padding-right: 14rem !important;
-    }
+@media (min-width: 768px) {
+  .pr-md-5 {
+    padding-right: 14rem !important;
+  }
 }
 
 section {
-    display: flex;
-    flex-grow: 1;
+  display: flex;
+  flex-grow: 1;
+}
+
+.yt-frame {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+#caminhodepao {
+  background-color: #080c10;
+  padding: 0 !important;
 }

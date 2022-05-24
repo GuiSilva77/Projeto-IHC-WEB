@@ -20,16 +20,25 @@ namespace Projeto_IHC.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             return View();
         }
 
         public IActionResult ListaFilmes()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             return View(db.FILMES.ToList());
         }
 
         public IActionResult ListaSessoes()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             var sessoes = new List<Entidades.Sessao>(db.SESSOES.ToList());
 
             foreach (var sessao in sessoes)
@@ -41,6 +50,9 @@ namespace Projeto_IHC.Controllers
 
         public IActionResult AdicionarFilme()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             return View();
         }
 
@@ -52,9 +64,12 @@ namespace Projeto_IHC.Controllers
             return RedirectToAction("ListaFilmes");
         }
 
-        public IActionResult EditarFilme()
+        public IActionResult EditarFilme(int id)
         {
-            return View(db.FILMES.ToList());
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
+            return View(db.FILMES.Where(f => f.Id == id).FirstOrDefault());
         }
 
         [HttpPost]
@@ -67,14 +82,20 @@ namespace Projeto_IHC.Controllers
 
         public IActionResult RemoverFilme(int id)
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             db.FILMES.Remove(
                 db.FILMES.Where(a => a.Id == id).FirstOrDefault()
                 );
+            db.SaveChanges();
             return RedirectToAction("ListaFilmes");
         }
 
         public IActionResult AdicionarSessao()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
             AdicionarSessaoModel model = new()
             {
                 FilmesDisponiveis = db.FILMES.ToList()
@@ -103,6 +124,9 @@ namespace Projeto_IHC.Controllers
 
         public ActionResult EditarSessao(int id)
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             AdicionarSessaoModel model = new()
             {
                 FilmesDisponiveis = db.FILMES.ToList(),
@@ -126,6 +150,18 @@ namespace Projeto_IHC.Controllers
                 );
             db.SaveChanges();
             return RedirectToAction("ListaSessoes");
+        }
+
+        public IActionResult PaginaInicial()
+        {
+            ViewData["admin"] = User.Identity.Name;
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult ListaAdmin()
+        {
+            return View();
         }
     }
 }

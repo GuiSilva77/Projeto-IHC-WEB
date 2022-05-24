@@ -23,3 +23,16 @@ nav {
   width: 20vh;
   height: auto;
 }
+
+.dropdown-item {
+  background-color: var(--color-primary) !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+  background-color: hsl(210, 33%, 20%) !important;
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgba(158, 162, 166, 0.418);
+}

@@ -20,6 +20,9 @@ namespace Projeto_IHC.Controllers
         }
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             HomeModel HM = new()
             {
                 FilmeDestaque = db.FILMES.Where(a => a.emCartaz == true).FirstOrDefault(),
@@ -30,6 +33,9 @@ namespace Projeto_IHC.Controllers
 
         public IActionResult Programacao()
         {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
             ProgramacaoModel PM = new()
             {
                 Sessoes = db.SESSOES.ToList()

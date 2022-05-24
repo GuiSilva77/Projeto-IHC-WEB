@@ -8,21 +8,24 @@ using System.Threading.Tasks;
 
 namespace Projeto_IHC.Controllers
 {
-  public class FilmeController : Controller
-  {
-    public readonly Contexto db;
-    public FilmeController(Contexto _db)
+    public class FilmeController : Controller
     {
-      db = _db;
-    }
+        public readonly Contexto db;
+        public FilmeController(Contexto _db)
+        {
+            db = _db;
+        }
 
-    public IActionResult Index(int id)
-    {
-      FilmeModel FM = new()
-      {
-        Filme = db.FILMES.Where(a => a.Id == id).FirstOrDefault()
-      };
-      return View(FM);
+        public IActionResult Index(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+                ViewData["admin"] = User.Identity.Name;
+
+            FilmeModel FM = new()
+            {
+                Filme = db.FILMES.Where(a => a.Id == id).FirstOrDefault()
+            };
+            return View(FM);
+        }
     }
-  }
 }
