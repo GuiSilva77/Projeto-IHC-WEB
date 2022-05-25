@@ -20,6 +20,10 @@ namespace Projeto_IHC.Controllers
         }
         public IActionResult Index()
         {
+            if (db.USUARIOS.Any() == false)
+            {
+                return RedirectToAction("IniciarPagina", "Usuario");
+            }
             if (User.Identity.IsAuthenticated)
                 ViewData["admin"] = User.Identity.Name;
 

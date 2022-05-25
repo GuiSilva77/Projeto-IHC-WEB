@@ -121,7 +121,7 @@
                 <span class="text-danger" asp-validation-for="Resumo"></span>
             </div>
 
-            <input type="submit" class="btn btn-primary" />
+            <button class="btn btn-primary" id="EnviarBtn">Adicionar</button>
         </form>
     </div>
 </div>
@@ -218,5 +218,18 @@
         document.getElementById("res").value = "";
     })
 
+    document.getElementById("enviarBtn").addEventListener("click", async () => {
+        // check if urltrailer is valid
+        // if not, show error message
+        // if yes, send form
+        //valid: https://www.youtube.com/embed/
+        const urltrailer = document.getElementById("urlt").value;
+
+        if (urltrailer.substring(0, 32) != "https://www.youtube.com/embed/") {
+            alert("URL do trailer inválida");
+        } else {
+            form.submit();
+        }
+    });
 </script>
 }

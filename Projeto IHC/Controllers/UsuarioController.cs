@@ -27,11 +27,6 @@ namespace Projeto_IHC.Controllers
             return View();
         }
 
-        public IActionResult Cadastrar()
-        {
-            return View();
-        }
-
         [HttpPost]
         public async Task<ActionResult> Entrar(string login, string senha)
         {
@@ -90,6 +85,33 @@ namespace Projeto_IHC.Controllers
             return Redirect(ViewData["ReturnUrl"].ToString());
         }
 
+        public IActionResult Cadastrar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Cadastrar(Entidades.Usuario DadosTela)
+        {
+            if (string.IsNullOrEmpty(DadosTela.Nome) || string.IsNullOrEmpty(DadosTela.Email) || string.IsNullOrEmpty(DadosTela.Senha))
+            {
+                TempData["Error"] = "O(s) Campo(s) não pode(m) estar vazio(s).";
+                return View();
+            }
+
+            if (db.USUARIOS.Where(a => a.Email == DadosTela.Email).FirstOrDefault() != null)
+            {
+                TempData["Error"] = "E-mail já cadastrado.";
+                return View();
+            }
+
+            db.USUARIOS.Add(DadosTela);
+            db.SaveChanges();
+
+            TempData["Success"] = "Usuário cadastrado com sucesso.";
+            return RedirectToAction("Entrar");
+        }
+
         public IActionResult Redefinir()
         {
             return View();
@@ -130,6 +152,30 @@ namespace Projeto_IHC.Controllers
 
             TempData["Success"] = "Senha Redefinida com Sucesso.";
             return RedirectToAction("Entrar");
+        }
+
+        public IActionResult IniciarPagina()
+        {
+            TempData["conteudo"] = "Nenhum Usuário foi encontrado, para continuar insira a Chave-Mestra para o cadastro de um usuário.";
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult IniciarPagina(string chave)
+        {
+            var chaveMestra = "123456789";
+            if (string.IsNullOrEmpty(chave))
+            {
+                TempData["Error"] = "O(s) Campo(s) não pode(m) estar vazio(s).";
+                return View();
+            }
+            if (chave != chaveMestra)
+            {
+                TempData["Error"] = "Chave Inválida.";
+                return View();
+            }
+
+            return RedirectToAction("Cadastrar");
         }
     }
 }

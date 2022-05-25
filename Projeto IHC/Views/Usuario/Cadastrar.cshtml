@@ -1,57 +1,58 @@
-﻿@section Styles{
-    <link rel="stylesheet" href="~/css/style/Login.css" />
+﻿@model Projeto_IHC.Entidades.Usuario
+
+@{
+    ViewData["Title"] = "Cadastrar Usuário";
+}
+
+@section Styles{
+<link rel="stylesheet" href="~/css/Entrar.css" />
 }
 <main class="bg-dark">
     <div class="container">
-        <div class="card-header">
-            <h3 class="card-title text-center text-white">Cadastro</h3>
+        <div class="card-header d-flex justify-content-center align-items-center" id="card-header">
+            <img src="/img/capital.svg" class="login-logo" />
         </div>
-        <div class="card-body">
-            <form method="post" action="/Usuarios/Login">
-                <div class="d-flex flex-sm-row m-0 justify-content-sm-between flex-column m-sm-3">
-                    <div class="form-group m-sm-0 m-3 mb-0">
-                        <label for="" class="text-white">Nome</label>
-                        <input type="text"
-                               name="usuario"
-                               id="Usuario"
-                               class="form-control" />
-
-                    </div>
-                    <div class="form-group m-sm-0 m-3 mb-0">
-                        <label for="" class="text-white">Sobrenome</label>
-                        <input type="text"
-                               name="usuario"
-                               id="Usuario"
-                               class="form-control" />
-                    </div>
+        <div class="card-body d-flex flex-column">
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">
+                    <i class="fa-solid fa-info"></i> @TempData["Error"]
                 </div>
-                    <div class="form-group m-3">
-                        <label for="" class="text-white">Email</label>
-                        <input type="email"
-                               name="senha"
-                               id="Usuario"
-                               class="form-control" />
-                    </div>
+            }
+            <form method="post" action="/Usuario/Cadastrar">
                 <div class="form-group m-3">
-                    <label for="" class="text-white">Senha</label>
-                    <input type="password"
-                           name="senha"
-                           id="Usuario"
-                           class="form-control" />
+                    <input asp-for="Nome" type="text" id="Nome" class="form-control" placeholder="Nome" />
+                    <span asp-validation-for="Nome"></span>
                 </div>
                 <div class="form-group m-3">
-                    <label for="" class="text-white">CPF</label>
-                    <input type="number"
-                           name="senha"
-                           id="Usuario"
-                           class="form-control" />
+                    <input asp-for="Email" type="text" id="Usuario" class="form-control" placeholder="Usuário" />
+                    <span asp-validation-for="Email"></span>
                 </div>
-                <button type="submit" class="btn btn-primary mt-0 m-3">
-                    Entrar
+                <div class="form-group m-3">
+                    <input asp-for="Senha" type="password" id="Senha" class="form-control" placeholder="Senha" />
+                    <span asp-validation-for="Senha"></span>
+                </div>
+                <div class="form-group m-3">
+                    <input asp-for="Senha" type="password" id="Senha2" class="form-control"
+                        placeholder="Confirme a Senha" />
+                    <span asp-validation-for="Senha"></span>
+                </div>
+                <button id="enviarBtn" class="btn btn-primary mt-0 m-3">
+                    Cadastrar
                 </button>
             </form>
         </div>
     </div>
 </main>
 
-
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $("#enviarBtn").click(function () {
+            if ($("#Senha").val() != $("#Senha2").val()) {
+                $("#Senha2").addClass("is-invalid");
+            }
+        });
+    });
+</script>
+}

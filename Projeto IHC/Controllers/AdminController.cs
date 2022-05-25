@@ -161,6 +161,7 @@ namespace Projeto_IHC.Controllers
 
         public IActionResult ListaAdmin()
         {
+
             return View();
         }
     }
