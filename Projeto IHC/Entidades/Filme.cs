@@ -19,5 +19,7 @@ namespace Projeto_IHC.Entidades
     public bool emBreve { get; set; }
     public string Classificacao { get; set; }
     public string Duracao { get; set; }
+
+    
   }
 }

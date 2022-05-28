@@ -25,6 +25,11 @@
         .dropdown-divider {
             border-top: 1px solid rgba(158, 162, 166, 0.418);
         }
+
+        nav {
+            padding-left: 10%!important;
+            padding-right: 10%!important;
+        }
     </style>
     @RenderSection("Styles", required: false)
 </head>
@@ -32,7 +37,7 @@
 <body class="bg-dark">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand d-flex" asp-area="" asp-controller="Admin" asp-action="Index"><img
                         style="width: 3em;" src="~/img/logo.svg" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
