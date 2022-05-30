@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/cineplex1123db/databases/Projeto IHC_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:cineplex1123",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
