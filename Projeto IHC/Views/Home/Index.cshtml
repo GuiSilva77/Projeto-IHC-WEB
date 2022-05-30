@@ -5,13 +5,13 @@
 @model HomeModel
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/style/main-section.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/style/film-row.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/style/session-table.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/Home.css" asp-append-version="true"/>
+<link rel="stylesheet" href="~/css/style/main-section.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/style/film-row.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/style/session-table.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Home.css" asp-append-version="true" />
 }
 
-<section id="home" class="destaque mt-3">
+<section id="home" class="destaque ">
     <div class="main-card" style="background-image: url('@Model.FilmeDestaque.URLCapa')">
         <div>
             <p class="h1 text-white">@Model.FilmeDestaque.Nome</p>
@@ -37,7 +37,7 @@
 <section id="embreve" class="flex-column mt-3">
     <p class="h2 text-white text-center">Em Breve</p>
     <div class="row m-0 flex-nowrap overflow-auto justify-content-center">
-        @{ 
+        @{
             foreach (var item in Model.filmesEmBreve)
             {
                 <div class="f-card" style="background-image: url(@item.URLPoster)">

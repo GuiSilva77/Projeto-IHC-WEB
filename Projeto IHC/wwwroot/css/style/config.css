@@ -41,3 +41,9 @@ section {
 main {
   flex: 1;
 }
+
+.alert-danger {
+  color: white;
+  background-color: hsl(355deg 61% 32% / 20%) !important;
+  border-color: hsl(355, 61%, 32%);
+}

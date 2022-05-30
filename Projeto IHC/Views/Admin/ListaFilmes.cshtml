@@ -14,6 +14,13 @@
 
 <h1>Lista de Filmes</h1>
 
+@if (TempData["error"] != null)
+{
+        <div class="alert alert-danger alert-dismissible fade show">
+        @TempData["error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
 <p>
     <a class="btn btn-outline-success" href="/Admin/AdicionarFilme">Adicionar Filme</a>

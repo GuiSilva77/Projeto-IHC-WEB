@@ -59,6 +59,12 @@ namespace Projeto_IHC.Controllers
         [HttpPost]
         public IActionResult AdicionarFilme(Entidades.Filme DadosTela)
         {
+            if (db.FILMES.Any(f => f.Nome == DadosTela.Nome))
+            {
+                TempData["error"] = "Filme já cadastrado";
+                return RedirectToAction("AdicionarFilme");
+            }
+
             db.FILMES.Add(DadosTela);
             db.SaveChanges();
             return RedirectToAction("ListaFilmes");
@@ -85,11 +91,17 @@ namespace Projeto_IHC.Controllers
             if (User.Identity.IsAuthenticated)
                 ViewData["admin"] = User.Identity.Name;
 
-            db.FILMES.Remove(
-                db.FILMES.Where(a => a.Id == id).FirstOrDefault()
-                );
-            db.SaveChanges();
-            return RedirectToAction("ListaFilmes");
+            if (db.SESSOES.Where(s => s.FilmeId == id).Any() == true)
+            {
+                TempData["error"] = "Não é possível remover o filme, pois existem sessões associadas a ele.";
+                return RedirectToAction("ListaFilmes");
+            }
+            else
+            {
+                db.FILMES.Remove(db.FILMES.Where(f => f.Id == id).FirstOrDefault());
+                db.SaveChanges();
+                return RedirectToAction("ListaFilmes");
+            }
         }
 
         public IActionResult AdicionarSessao()
