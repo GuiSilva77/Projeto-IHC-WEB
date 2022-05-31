@@ -1,7 +1,7 @@
 ﻿@model Projeto_IHC.Models.AdicionarSessaoModel
 
 @{
-    ViewData["Title"] = "Adicionar Sessao";
+    ViewData["Title"] = "Adicionar Sessão";
 }
 
 @section Styles {
@@ -16,15 +16,15 @@
     </ol>
 </nav>
 
-<h1>Adicionar Sessão</h1>
+<h1 class="text-center">Adicionar Sessão</h1>
 
 <hr />
 
-<div class="row">
-    <div class="col-md-4">
+<div class="d-flex px-5">
+    <div class="flex-grow-1 mx-5">
         <form asp-action="AdicionarSessao">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group m-3">
                 <label class="control-label">Filme</label>
                 <select asp-for="Sessao.FilmeId" class="form-control" id="inputGroupSelect01">
                     <option selected>Selecione um Filme</option>
@@ -35,12 +35,12 @@
                 </select>
                 <span asp-validation-for="Sessao.FilmeId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group m-3">
                 <label>Horário</label>
                 <input asp-for="Sessao.Horario" class="form-control" type="time" />
                 <span asp-validation-for="Sessao.Horario" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group m-3">
                 <label>Dias da Semana</label>
                 <input asp-for="Sessao.DiasSemana" type="hidden" id="diassemena" />
                 <div class="d-flex flex-row">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group m-3">
                 <label>Sala</label>
                 <div class="form-check form-check-inline">
                     <input asp-for="Sessao.Sala" class="form-check-input" type="radio" value="1">
@@ -89,7 +89,7 @@
                     <label class="form-check-label">3</label>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group m-3">
                 <label>Áudio</label>
                 <div class="form-check form-check-inline">
                     <input asp-for="Sessao.Audio" class="form-check-input" type="radio" value="Dublado">
@@ -100,7 +100,7 @@
                     <label class="form-check-label">Legendado</label>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group m-3">
                 <label>Vídeo</label>
                 <div class="form-check form-check-inline">
                     <input asp-for="Sessao.Video" class="form-check-input" type="radio" value="2D">

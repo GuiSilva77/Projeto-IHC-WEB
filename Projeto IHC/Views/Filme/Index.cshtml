@@ -4,6 +4,9 @@
 
 @model Projeto_IHC.Models.FilmeModel
 
+@{
+    ViewData["Title"] = Model.Filme.Nome;
+}
 
 <section class="mt-3">
     <nav class="mx-3" id="caminhodepao" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">

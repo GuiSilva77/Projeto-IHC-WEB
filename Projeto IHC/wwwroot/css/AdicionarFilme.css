@@ -35,7 +35,7 @@ input:focus {
   font-size: 1.2rem;
   font-weight: bold;
   border-radius: 0;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 button:hover,
@@ -57,10 +57,14 @@ button:focus {
   background-color: var(--color-primary);
   border: 1px solid var(--color-primary);
   border-radius: 50%;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   transition: all 0.2s ease-in-out;
 }
 
 #ajudaBtn:hover {
   background-color: hsl(210, 33%, 11%);
+}
+
+span {
+  position: absolute;
 }

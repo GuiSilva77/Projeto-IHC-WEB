@@ -16,48 +16,48 @@
     </ol>
 </nav>
 
-<h1>Editar Filme</h1>
+<h1 class="text-center">Editar Filme</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-8">
+<div class="d-flex px-5">
+    <div class="flex-grow-1">
         <form asp-action="EditarFilme">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group w-auto m-2 mb-2">
+            <div class="form-group w-auto m-3">
                 <label asp-for="Nome"></label>
                 <input asp-for="Nome" type="text" id="Nome" class="form-control" required />
                 <span id="Nome-sp" class="text-danger"></span>
             </div>
             <div class="d-flex flex-sm-row flex-column">
-                <div class="form-group w-100 m-2 mb-2">
+                <div class="form-group w-100 m-3">
                     <label>URL do Poster</label>
                     <input asp-for="URLPoster" type="url" class="form-control" id="urlp" required />
                     <span class="text-danger" id="urlp-sp"></span>
                 </div>
-                <div class="form-group w-100 m-2 mb-2">
+                <div class="form-group w-100 m-3">
                     <label>URL da Capa</label>
                     <input asp-for="URLCapa" type="url" class="form-control" id="urlc" required />
                     <span class="text-danger" id="urlc-sp"></span>
                 </div>
             </div>
-            <div class="form-group w-auto m-2 mb-2">
+            <div class="form-group w-auto m-3">
                 <label>URL do Trailer</label>
                 <input asp-for="URLTrailer" type="url" class="form-control" id="urlt" required />
                 <span class="text-danger" id="urlt-sp"></span>
             </div>
             <div class="d-flex flex-sm-row flex-column">
-                <div class="form-group w-100 m-2 mb-2">
+                <div class="form-group w-100 m-3">
                     <label>Diretor</label>
                     <input asp-for="Diretor" type="text" class="form-control" id="dir" required />
                     <span class="text-danger" id="dir-sp"></span>
                 </div>
-                <div class="form-group w-100 m-2 mb-2">
+                <div class="form-group w-100 m-3">
                     <label>Ano</label>
                     <input asp-for="Ano" type="number" class="form-control" id="ano" required />
                     <span class="text-danger" id="ano-sp"></span>
                 </div>
             </div>
-            <div class="form-group w-100 m-2 mb-2">
+            <div class="form-group w-100 m-3">
                 <label>Opções</label>
                 <div class="form-check form-check-inline">
                     <input asp-for="emBreve" class="form-check-input">
@@ -70,7 +70,7 @@
                 <span class="text-danger" id="op-sp"></span>
             </div>
             <div class="d-flex flex-sm-row flex-column">
-                <div class="form-group w-100 m-2 mb-2">
+                <div class="form-group w-100 m-3">
                     <label>Classificação Indicativa</label>
                     <select asp-for="Classificacao" class="form-control" id="clas">
                         <option selected>Selecione uma Classificação</option>
@@ -84,18 +84,18 @@
                     <span class="text-danger" id="clas-sp"></span>
                 </div>
 
-                <div class="form-group w-100 m-2 mb-2">
+                <div class="form-group w-100 m-3">
                     <label>Duração</label>
                     <input asp-for="Duracao" type="text" class="form-control" id="dur" required />
                     <span class="text-danger" id="dur-sp"></span>
                 </div>
             </div>
-            <div class="form-group w-auto m-2 mb-2">
+            <div class="form-group w-auto m-3">
                 <label>Resumo</label>
                 <textarea asp-for="Resumo" class="form-control" id="res" required></textarea>
                 <span class="text-danger" id="res-sp"></span>
             </div>
-            <button class="btn btn-primary" id="EnviarBtn">Adicionar</button>
+            <button class="btn btn-primary" id="EnviarBtn">Salvar Alterações</button>
         </form>
     </div>
 </div>

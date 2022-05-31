@@ -69,7 +69,8 @@
                     {
                         <tr>
                             <td>
-                                <a class="d-flex filme row" href="/Filme/Index/@item.Filme.Id">
+                                <a class="d-flex filme row" href="/Filme/Index/@item.Filme.Id" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Ir para a página do Filme">
                                     <div class="div-poster col-2">
                                         <img src="@item.Filme.URLPoster" alt="Poster" class="poster" />
                                     </div>
@@ -114,7 +115,9 @@
                                 else
                                 {
                                     <td>
-                                        <div class="d-flex justify-content-center px-3"></div>
+                                        <div class="d-flex justify-content-center px-3">
+                                            <i class="fa-solid fa-times"></i>
+                                        </div>
                                     </td>
                                 }
                             }
@@ -125,3 +128,7 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+<script src="~/js/Programacao.js"></script>
+}
