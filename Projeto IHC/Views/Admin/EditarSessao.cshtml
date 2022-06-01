@@ -25,9 +25,9 @@
         <form action="/Admin/EditarSessao/" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group m-3">
-                <label>Filme</label>
-                <select asp-for="Sessao.FilmeId" class="form-control" id="inputGroupSelect01">
-                    <option selected>Selecione um Filme</option>
+                <label class="control-label">Filme</label>
+                <select asp-for="Sessao.FilmeId" class="form-control" id="inputGroupSelect01" required>
+                    <option value="">Selecione um Filme</option>
                     @foreach (var item in Model.FilmesDisponiveis)
                     {
                         <option value="@item.Id">@item.Nome</option>
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group m-3">
                 <label>Horário</label>
-                <input asp-for="Sessao.Horario" class="form-control" type="time" />
+                <input asp-for="Sessao.Horario" class="form-control" type="time" required value="" id="hor" />
                 <span asp-validation-for="Sessao.Horario" class="text-danger"></span>
             </div>
             <div class="form-group m-3">
