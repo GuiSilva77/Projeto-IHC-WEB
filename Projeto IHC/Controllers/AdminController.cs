@@ -61,7 +61,7 @@ namespace Projeto_IHC.Controllers
         {
             if (db.FILMES.Any(f => f.Nome == DadosTela.Nome))
             {
-                TempData["error"] = "Filme já cadastrado";
+                TempData["error"] = "Filme já cadastrado, insira outro nome.";
                 return RedirectToAction("AdicionarFilme");
             }
 

@@ -65,6 +65,6 @@ button:focus {
   background-color: hsl(210, 33%, 11%);
 }
 
-span {
+form span {
   position: absolute;
 }

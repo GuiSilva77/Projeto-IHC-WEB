@@ -97,7 +97,7 @@
                     <td>
                         <div class="d-flex flex-md-row flex-column">
                             <a class="btn btn-outline-primary m-1" href="/Admin/EditarSessao/@item.Id">Editar</a>
-                            <a class="btn btn-outline-danger m-1" href="/Admin/RemoverSessao/@item.Id">Remover</a>
+                            <a class="btn btn-outline-danger m-1" onclick="removerSessao(@item.Id)">Remover</a>
                         </div>
                     </td>
                 </tr>
@@ -105,3 +105,26 @@
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Remover</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja remover a sessão?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Não</button>
+                <button type="button" class="btn btn-outline-primary" id="btn-confirmar">Sim</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+<script src="~/js/Listagem.js"></script>
+}
