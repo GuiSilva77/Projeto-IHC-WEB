@@ -26,8 +26,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group m-3">
                 <label class="control-label">Filme</label>
-                <select asp-for="Sessao.FilmeId" class="form-control" id="inputGroupSelect01">
-                    <option selected>Selecione um Filme</option>
+                <select asp-for="Sessao.FilmeId" class="form-control" id="inputGroupSelect01" required>
+                    <option value="">Selecione um Filme</option>
                     @foreach (var item in Model.FilmesDisponiveis)
                     {
                         <option value="@item.Id">@item.Nome</option>
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group m-3">
                 <label>Horário</label>
-                <input asp-for="Sessao.Horario" class="form-control" type="time" />
+                <input asp-for="Sessao.Horario" class="form-control" type="time" required value="" id="hor" />
                 <span asp-validation-for="Sessao.Horario" class="text-danger"></span>
             </div>
             <div class="form-group m-3">
@@ -77,39 +77,43 @@
             <div class="form-group m-3">
                 <label>Sala</label>
                 <div class="form-check form-check-inline">
-                    <input asp-for="Sessao.Sala" class="form-check-input" type="radio" value="1">
+                    <input asp-for="Sessao.Sala" id="sala" class="form-check-input" type="radio" value="1" required />
                     <label class="form-check-label">1</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input asp-for="Sessao.Sala" class="form-check-input" type="radio" value="2">
+                    <input asp-for="Sessao.Sala" id="sala" class="form-check-input" type="radio" value="2" />
                     <label class="form-check-label">2</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input asp-for="Sessao.Sala" class="form-check-input" type="radio" value="3">
+                    <input asp-for="Sessao.Sala" id="sala" class="form-check-input" type="radio" value="3" />
                     <label class="form-check-label">3</label>
                 </div>
             </div>
             <div class="form-group m-3">
                 <label>Áudio</label>
                 <div class="form-check form-check-inline">
-                    <input asp-for="Sessao.Audio" class="form-check-input" type="radio" value="Dublado">
+                    <input asp-for="Sessao.Audio" id="audio" class="form-check-input" type="radio" value="Dublado"
+                        id="audio">
                     <label class="form-check-label">Dublado</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input asp-for="Sessao.Audio" class="form-check-input" type="radio" value="Legendado">
+                    <input asp-for="Sessao.Audio" id="audio" class="form-check-input" type="radio" value="Legendado">
                     <label class="form-check-label">Legendado</label>
                 </div>
+
             </div>
             <div class="form-group m-3">
                 <label>Vídeo</label>
                 <div class="form-check form-check-inline">
-                    <input asp-for="Sessao.Video" class="form-check-input" type="radio" value="2D">
+                    <input asp-for="Sessao.Video" id="video" class="form-check-input" type="radio" value="2D"
+                        id="video">
                     <label class="form-check-label">2D</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input asp-for="Sessao.Video" class="form-check-input" type="radio" value="3D">
+                    <input asp-for="Sessao.Video" id="video" class="form-check-input" type="radio" value="3D">
                     <label class="form-check-label">3D</label>
                 </div>
+
             </div>
 
             <button id="EnviarBtn" class="btn btn-primary">Criar Sessão</button>
@@ -120,31 +124,5 @@
 @section Scripts {
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-<script>
-    const EnviarBtn = document.getElementById('EnviarBtn');
-    // selecionar todas as checkboxes
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-
-
-    EnviarBtn.addEventListener('click', function (event) {
-        event.preventDefault();
-        // criar um array com os valores dos checkboxes
-        const checkboxesValues = Array.from(checkboxes).map(checkbox => checkbox.checked);
-
-        let DiasSemana = "";
-        checkboxesValues.map((value, index) => {
-            if (value) {
-                DiasSemana += "1"
-            }
-            else {
-                DiasSemana += "0"
-            }
-        });
-
-        document.getElementById('diassemena').value = DiasSemana;
-        document.querySelector('form').submit();
-    });
-
-</script>
+<script src="~/js/AdicionarSessao.js"></script>
 }

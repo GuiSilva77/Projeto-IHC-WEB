@@ -29,16 +29,27 @@ botao.addEventListener("click", async () => {
     document.getElementById("Nome-sp").innerText = "";
   }
 
-  modal.show();
+  await tabela.classList.add("bg-dark");
+
+  await modal.show();
 
   tabela.innerHTML = `
-        <div class="container d-flex justify-content-center">
-            <div>
-                <i class="fa-solid fa-circle-notch fa-spin fa-xl"></i>
-                <span>Carregando</span>
+  <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Selecionar Filme</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="container d-flex justify-content-center">
+                <div>
+                    <i class="fa-solid fa-circle-notch fa-spin fa-xl"></i>
+                    <span>Carregando</span>
+                </div>
             </div>
         </div>
-    `;
+    </div>
+            `;
 
   await fetch(
     `${TMDB_API_URL}search/movie?api_key=${TMDB_API_KEY}&query=${nome.value}&language=pt-BR`,
@@ -56,16 +67,30 @@ botao.addEventListener("click", async () => {
   if (results.results.length > 0) {
     tabela.innerHTML = "";
 
-    tabela.innerHTML = `<table class="table table-striped table-hover">
-        <thead>
-          <th></th>
-          <th>Nome</th>
-          <th>Ano</th>
-          <th></th>
-        </thead>
-        <tbody id="conteudo">
-        </tbody>
-      </table>`;
+    tabela.innerHTML = `
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Selecionar Filme</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <table class="table table-striped table-hover">
+                <thead>
+                  <th></th>
+                  <th>Nome</th>
+                  <th>Ano</th>
+                  <th></th>
+                </thead>
+                <tbody id="conteudo">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+    `;
 
     const conteudo = document.getElementById("conteudo");
     console.log(results.results);
@@ -76,7 +101,7 @@ botao.addEventListener("click", async () => {
         <td><p>${element.title}</p></td>
         <td><p>${element.release_date}</p></td>
         <td>
-          <button class="btn btn-primary" onclick="selecionarFilme(${element.id})" data-bs-dismiss="modal">Selecionar Filme</button>
+          <button class="btn btn-primary" onclick="selecionarFilme(${element.id})" >Selecionar Filme</button>
         </td>
       </tr>`;
     });
@@ -84,6 +109,17 @@ botao.addEventListener("click", async () => {
 });
 
 const selecionarFilme = (id) => {
+  tabela.classList.remove("bg-dark");
+  tabela.style.background = "none";
+
+  tabela.innerHTML = `
+  <div class="container d-flex justify-content-center">
+  <div>
+  <i class="fa-solid fa-circle-notch fa-spin fa-xl"></i>
+  <span>Carregando</span>
+  </div>
+  </div>
+      `;
   fetch(
     `${TMDB_API_URL}movie/${id}?api_key=${TMDB_API_KEY}&language=pt-BR&append_to_response=videos`
   )
@@ -115,6 +151,7 @@ const selecionarFilme = (id) => {
       document.getElementById("ano").value = filme.release_date.substring(0, 4);
       document.getElementById("dur").value = filme.runtime;
       document.getElementById("res").value = filme.overview;
+      await modal.hide();
     })
     .catch((error) => {
       console.error(error);
