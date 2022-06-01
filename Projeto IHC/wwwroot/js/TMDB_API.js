@@ -23,9 +23,12 @@ let results = {};
 botao.addEventListener("click", async () => {
   if (nome.value == "" || nome.value == null) {
     modal.hide();
+    nome.style.border = "1px solid red";
+    nome.focus();
     document.getElementById("Nome-sp").innerText = "Insira um nome";
     return;
   } else {
+    nome.style.border = "1px solid rgba(158, 162, 166, 0.418)";
     document.getElementById("Nome-sp").innerText = "";
   }
 
@@ -88,7 +91,7 @@ botao.addEventListener("click", async () => {
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
     </div>
     `;
 
@@ -115,8 +118,7 @@ const selecionarFilme = (id) => {
   tabela.innerHTML = `
   <div class="container d-flex justify-content-center">
   <div>
-  <i class="fa-solid fa-circle-notch fa-spin fa-xl"></i>
-  <span>Carregando</span>
+    <i class="fa-solid fa-circle-notch fa-spin fa-xl"></i>
   </div>
   </div>
       `;
