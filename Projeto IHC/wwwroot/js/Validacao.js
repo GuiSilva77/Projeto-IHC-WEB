@@ -1,7 +1,7 @@
 ﻿const limparBTN = document.getElementById("limparBtn");
 
-const emBreve = document.getElementById("emBreve");
-const emCartaz = document.getElementById("emCartaz");
+const EmBreve = document.getElementById("EmBreve");
+const EmCartaz = document.getElementById("EmCartaz");
 const clas = document.getElementsById("clas");
 const res = document.getElementById("res");
 
@@ -9,8 +9,8 @@ document.getElementById("EnviarBtn").addEventListener("click", (e) => {
   e.preventDefault();
 
   if (
-    (emBreve.checked == true && emCartaz.checked == true) ||
-    (emBreve.checked == false && emCartaz.checked == false)
+    (EmBreve.checked == true && EmCartaz.checked == true) ||
+    (EmBreve.checked == false && EmCartaz.checked == false)
   ) {
     document.getElementById("op-sp").innerText = "Selecione uma opção";
     return;

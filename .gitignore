@@ -3,6 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+sql
+
+docker-compose.yml
+.vscode
+appsettings.json
+appsettings.Development.json
+
 # User-specific files
 *.rsuser
 *.suo
@@ -97,6 +104,7 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+*.scss
 
 # Chutzpah Test files
 _Chutzpah*

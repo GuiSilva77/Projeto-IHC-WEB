@@ -7,6 +7,6 @@ namespace Projeto_IHC.Models
 {
     public class FilmeModel
     {
-        public Entidades.Filme Filme { get; set; }
+        public Entidades.Filme? Filme { get; set; }
     }
 }

@@ -120,10 +120,10 @@ namespace Projeto_IHC.Controllers
         {
             var FilmeSelecionado = db.FILMES.Where(f => f.Id == DadosTela.Sessao.FilmeId).FirstOrDefault();
 
-            if (FilmeSelecionado.emBreve == true)
+            if (FilmeSelecionado.EmBreve == true)
             {
-                FilmeSelecionado.emBreve = false;
-                FilmeSelecionado.emCartaz = true;
+                FilmeSelecionado.EmBreve = false;
+                FilmeSelecionado.EmCartaz = true;
                 db.FILMES.Update(FilmeSelecionado);
             }
 

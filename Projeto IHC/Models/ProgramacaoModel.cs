@@ -7,6 +7,6 @@ namespace Projeto_IHC.Models
 {
     public class ProgramacaoModel
     {
-        public List<Entidades.Sessao> Sessoes { get; set; }
+        public List<Entidades.Sessao>? Sessoes { get; set; }
     }
 }

@@ -7,26 +7,30 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Projeto_IHC;
 
+#nullable disable
+
 namespace Projeto_IHC.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220519162903_M4")]
-    partial class M4
+    [Migration("20221010174917_M2")]
+    partial class M2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.16")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Projeto_IHC.Entidades.Filme", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Ano")
                         .HasColumnType("nvarchar(max)");
@@ -39,6 +43,12 @@ namespace Projeto_IHC.Migrations
 
                     b.Property<string>("Duracao")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmBreve")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("EmCartaz")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
@@ -55,12 +65,6 @@ namespace Projeto_IHC.Migrations
                     b.Property<string>("URLTrailer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("emBreve")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("emCartaz")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
                     b.ToTable("FILMES");
@@ -70,8 +74,9 @@ namespace Projeto_IHC.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Audio")
                         .HasColumnType("nvarchar(max)");
@@ -102,8 +107,9 @@ namespace Projeto_IHC.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");

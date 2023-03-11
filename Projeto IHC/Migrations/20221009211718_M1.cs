@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace Projeto_IHC.Migrations
 {
     public partial class M1 : Migration
@@ -19,7 +21,11 @@ namespace Projeto_IHC.Migrations
                     URLTrailer = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Diretor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ano = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Resumo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Resumo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmCartaz = table.Column<bool>(type: "bit", nullable: false),
+                    EmBreve = table.Column<bool>(type: "bit", nullable: false),
+                    Classificacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Duracao = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,8 +41,8 @@ namespace Projeto_IHC.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Sobrenome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CPF = table.Column<int>(type: "int", nullable: false)
+                    DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UltimaVezOnline = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,39 +56,39 @@ namespace Projeto_IHC.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FilmeId = table.Column<int>(type: "int", nullable: false),
-                    Data = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Horario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DiasSemana = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Sala = table.Column<int>(type: "int", nullable: false),
                     Audio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Video = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UsuarioId = table.Column<int>(type: "int", nullable: true)
+                    Video = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SESSOES", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SESSOES_USUARIOS_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "USUARIOS",
+                        name: "FK_SESSOES_FILMES_FilmeId",
+                        column: x => x.FilmeId,
+                        principalTable: "FILMES",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_SESSOES_UsuarioId",
+                name: "IX_SESSOES_FilmeId",
                 table: "SESSOES",
-                column: "UsuarioId");
+                column: "FilmeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "FILMES");
-
-            migrationBuilder.DropTable(
                 name: "SESSOES");
 
             migrationBuilder.DropTable(
                 name: "USUARIOS");
+
+            migrationBuilder.DropTable(
+                name: "FILMES");
         }
     }
 }

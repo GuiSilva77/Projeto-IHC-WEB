@@ -7,8 +7,8 @@ namespace Projeto_IHC.Entidades
 {
     public class Ator
     {
-        public string  Nome { get; set; }
-        public string URLImagem { get; set; }
+        public string? Nome { get; set; }
+        public string? URLImagem { get; set; }
 
     }
 }
